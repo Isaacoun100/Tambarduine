@@ -1,6 +1,3 @@
-# -----------------------------------------------------------------------------
-# calc.py
-# -----------------------------------------------------------------------------
 import Lexer
 from sly import Parser
 
@@ -16,7 +13,7 @@ class CalcParser(Parser):
         self.names[p.NAME] = p.expr
         return ('assignment', p.NAME, p.expr)
 
-    # STATEMENTS
+    # ********************************* STATEMENTS *********************************#
     @_('expr')
     def statement(self, p):
         return p.expr
@@ -36,7 +33,17 @@ class CalcParser(Parser):
     def Else(self, p):
         return ('ELSE_EXPRESSION', p.expr)
 
-    # Expression Operator Expression
+    # FOR statement
+    @_('FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE')
+    def statement(self, p):
+        return ('FOR_EXPRESSION', p[2], p[6], p[10], p.statement)
+
+    # FOR statement NO STEP
+    @_('FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE')
+    def statement(self, p):
+        return ('FOR_EXPRESSION', p[2], p[6], 1, p.statement)
+
+    # *********************************  Expression Operator Expression  ********************************* #
     @_('expr PLUS expr',
        'expr MINUS expr',
        'expr TIMES expr',
@@ -75,5 +82,5 @@ class CalcParser(Parser):
 if __name__ == '__main__':
     lexer = Lexer.CalcLexer()
     parser = CalcParser()
-    text = 'IF (3 > 23) {2 + 2} ELSE { 3 - 4}'
+    text = 'FOR (12)  TO  (39) {IF(3>3){SET @var 3;} ELSE { 303 + 3}}'
     print(parser.parse(lexer.tokenize(text)))
