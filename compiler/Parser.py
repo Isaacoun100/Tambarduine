@@ -1,6 +1,10 @@
 import Lexer
 from sly import Parser
 
+"""
+Class for the parser
+"""
+
 
 class CalcParser(Parser):
     tokens = Lexer.CalcLexer.tokens
@@ -13,10 +17,18 @@ class CalcParser(Parser):
         self.names[p.NAME] = p.expr
         return ('assignment', p.NAME, p.expr)
 
-    # ********************************* STATEMENTS *********************************#
+    # ********************************* EXPRESSION *********************************#
+
+    # DEFINITION OF EXPRESSION  **TERMINAL**
     @_('expr')
     def statement(self, p):
         return p.expr
+
+    # ********************************* STATEMENTS *********************************#
+
+    # TODO: CASO CUANDO EL STATEMENT ES EMPTY
+    # TODO: IMPLEMENTAR RECURSIVIDAD <STATEMENTS> = <STATEMENTS><STATEMENTS>
+    # TODO: AGREGAR EL BLOQUE DE STATEMENTS BRACKET STATEMENTS BRACKET (SIMPLIFICACION DEL CODIGO)
 
     # SET statement
     @_('SET NAME expr SEMI')
@@ -42,6 +54,12 @@ class CalcParser(Parser):
     @_('FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE')
     def statement(self, p):
         return ('FOR_EXPRESSION', p[2], p[6], 1, p.statement)
+
+    # ********************************* INCLUDED FUNCTIONS *********************************#
+    # TODO: ADD "DEF" SYNTAX
+    # TODO: AGREGAR PRODUCCIONES PARA PARAMETROS DE DEF
+    # TODO: AGREGAR PARAMETRO PRINCIPAL
+    # TODO: ADD EN_CASO
 
     # Abanico A - B
     @_('ABANICO LPAREN LETTER_B RPAREN SEMI',
