@@ -8,6 +8,7 @@ class CalcLexer(Lexer):
     # Tokens
     NAME = Tokens.t_ID
     NUMBER = Tokens.t_INTEGER
+    STRING = Tokens.t_STRING
 
     # Especial Tokens
     IF = Tokens.t_IF
@@ -26,14 +27,13 @@ class CalcLexer(Lexer):
     FIN_EN_CASO = Tokens.t_FIN_EN_CASO
 
     # Operators
-    # todo: Agregar operador exponencial
-
     PLUS = Tokens.t_PLUS
     MINUS = Tokens.t_MINUS
     TIMES = Tokens.t_TIMES
     DIVIDE = Tokens.t_DIVIDE
     INT_DIVIDE = Tokens.t_INT_DIVIDE
     MODULE = Tokens.t_MODULE
+
     # Lower than - Lower Equal
     LT = Tokens.t_LT
     LE = Tokens.t_LE
@@ -76,7 +76,6 @@ class CalcLexer(Lexer):
 
     # LETRAS PARA LAS FUNCIONES
 
-    STRING = Tokens.t_STRING
     LETTER_A = Tokens.t_LETTER_A
     LETTER_B = Tokens.t_LETTER_B
     LETTER_D = Tokens.t_LETTER_D
@@ -86,7 +85,6 @@ class CalcLexer(Lexer):
     LETTER_F = Tokens.t_LETTER_F
 
     NEGATION = Tokens.t_NEGATION
-
 
     # Ignored pattern
     ignore_newline = r'\n+'

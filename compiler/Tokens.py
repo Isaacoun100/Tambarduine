@@ -2,17 +2,17 @@
 t_ignore = ' \t'
 
 tokens = {  # Literals (identifier)
-    'NAME', 'NUMBER', 'STRING', 'IF', 'ELSE', 'FOR', 'TO', 'STEP', 'SET', 'EN_CASO',
-    'CUANDO', 'EN_TONS', 'SI_NO', 'FIN_EN_CASO', 'NEGATION',  'ABANICO',
-    'VERTICAL', 'PERCUTOR', 'GOLPE', 'VIBRATO', 'METRONOMO', 'PRINT', 'LETTER_A', 'LETTER_B', 'LETTER_I', 'LETTER_D',
-    'LETTER_F', 'LETTER_T',
+    'NAME', 'NUMBER', 'STRING',
+    # RESERVED WORDS
+    'IF', 'ELSE', 'FOR', 'TO', 'STEP', 'SET',
+    'EN_CASO', 'CUANDO', 'EN_TONS', 'SI_NO', 'FIN_EN_CASO', 'NEGATION',
+    'ABANICO', 'VERTICAL', 'PERCUTOR', 'GOLPE', 'VIBRATO', 'METRONOMO',
+    'PRINT',
+    # SPECIAL LETTERS FOR PARAMS
+    'LETTER_A', 'LETTER_B', 'LETTER_I', 'LETTER_D', 'LETTER_F', 'LETTER_T',
 
     # Operators (+, -, *, **, //, / , <, <=,  >, >=, ==, <>)
-    'PLUS',
-    'MINUS', 'TIMES',
-    'INT_DIVIDE', 'DIVIDE', 'MODULE',
-
-    'LT', 'LE', 'GT', 'GE', 'EQUAL', 'NOT_EQUAL',
+    'PLUS', 'MINUS', 'TIMES', 'INT_DIVIDE', 'DIVIDE', 'MODULE', 'LT', 'LE', 'GT', 'GE', 'EQUAL', 'NOT_EQUAL',
 
     # Assignment (=)
     'ASSIGN',
@@ -22,12 +22,13 @@ tokens = {  # Literals (identifier)
     'LBRACE', 'RBRACE',
     'COMMA', 'PERIOD', 'SEMI', 'COLON',
 }
+# SE AGREGA UNO POR CADA TOKEN DE ARRIBA
 
 # Operators
+
 t_PLUS = r'\+'
 t_MINUS = r'\-'
 t_TIMES = r'\*'
-
 t_DIVIDE = r'/'
 t_INT_DIVIDE = r'//'
 t_MODULE = r'%'
@@ -41,8 +42,7 @@ t_NE = r'<>'
 # Assignment
 t_ASSIGN = r'='
 
-# Reserved words 'NEGATION', 'TRUE_OP', 'FALSE_OP', 'ABANICO',
-#     'VERTICAL', 'PERCUTOR', 'GOLPE', 'VIBRATO', 'METRONOMO', 'PRINT',
+# Reserved words
 t_IF = 'IF'
 t_ELSE = 'ELSE'
 t_FOR = 'FOR'
@@ -52,10 +52,8 @@ t_SET = 'SET'
 
 t_LETTER_A = 'A'
 t_LETTER_B = 'B'
-
 t_LETTER_I = 'I'
 t_LETTER_D = 'D'
-
 t_LETTER_F = 'F'
 t_LETTER_T = 'T'
 
@@ -66,9 +64,7 @@ t_GOLPE = 'Golpe'
 t_VIBRATO = 'Vibrato'
 t_METRONOMO = 'Metronomo'
 t_PRINT = 'println!'
-
 t_NEGATION = "Neg"
-
 
 t_EN_CASO = 'EN_CASO'
 t_CUANDO = 'CUANDO'
@@ -86,7 +82,7 @@ t_PERIOD = r'\.'
 t_SEMI = r';'
 t_COLON = r':'
 
-# Identifiers
+# Identifiers Reg-Ex
 t_ID = r'@[A-Za-z_][A-Za-z0-9_]*'
 
 # Integer literal
