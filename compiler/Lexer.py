@@ -65,6 +65,24 @@ class CalcLexer(Lexer):
     # Dos puntos
     COLON = Tokens.t_COLON
 
+    # FUNCTIONS
+    ABANICO = Tokens.t_ABANICO
+    VERTICAL = Tokens.t_VERTICAL
+    PERCUTOR = Tokens.t_PERCUTOR
+    GOLPE = Tokens.t_GOLPE
+    VIBRATO = Tokens.t_VIBRATO
+    METRONOMO = Tokens.t_METRONOMO
+    PRINT = Tokens.t_PRINT
+
+    # LETRAS PARA LAS FUNCIONES
+
+    STRING = Tokens.t_STRING
+    LETTER_A = Tokens.t_LETTER_A
+    LETTER_B = Tokens.t_LETTER_B
+
+    LETTER_D = Tokens.t_LETTER_D
+    LETTER_I = Tokens.t_LETTER_I
+    NEGATION = Tokens.t_NEGATION
     # Ignored pattern
     ignore_newline = r'\n+'
     ignore = ' \t'

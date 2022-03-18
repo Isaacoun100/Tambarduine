@@ -43,6 +43,57 @@ class CalcParser(Parser):
     def statement(self, p):
         return ('FOR_EXPRESSION', p[2], p[6], 1, p.statement)
 
+    # Abanico A - B
+    @_('ABANICO LPAREN LETTER_B RPAREN SEMI',
+       'ABANICO LPAREN LETTER_A RPAREN SEMI')
+    def statement(self, p):
+        return ('ABANICO_STATEMENT', p[2])
+
+    # Vertical
+    @_('VERTICAL LPAREN LETTER_I RPAREN SEMI',
+       'VERTICAL LPAREN LETTER_D RPAREN SEMI')
+    def statement(self, p):
+        return ('VERTICAL_STATEMENT', p[2])
+
+    # PERCUTOR SIMPLE
+    @_('PERCUTOR LPAREN LETTER_A RPAREN SEMI',
+       'PERCUTOR LPAREN LETTER_B RPAREN SEMI',
+       'PERCUTOR LPAREN LETTER_D RPAREN SEMI',
+       'PERCUTOR LPAREN LETTER_I RPAREN SEMI')
+    def statement(self, p):
+        return ('PERCUTOR_STATEMENT', p[2])
+
+    # PERCUTOR AMBOS LADOS
+    @_(
+        'PERCUTOR LPAREN LETTER_A LETTER_B RPAREN SEMI',
+        'PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI', )
+    def statement(self, p):
+        return ('PERCUTOR_STATEMENT', p[2] + p[3])
+
+    # GOLPE
+    @_('GOLPE LPAREN RPAREN SEMI')
+    def statement(self, p):
+        return ('GOLPE_STATEMENT', 1)
+
+    # VIBRATO
+    @_('VIBRATO LPAREN NUMBER RPAREN SEMI')
+    def statement(self, p):
+        return ('VIBRATO_STATEMENT', p.NUMBER)
+
+    # METRONOMO
+    @_('METRONOMO LPAREN LETTER_A RPAREN SEMI',
+       'METRONOMO LPAREN LETTER_D RPAREN SEMI')
+    def statement(self, p):
+        return ('METRONOMO_STATEMENT', p[2])
+
+    # PRINT
+    @_('PRINT LPAREN STRING RPAREN SEMI',
+       'PRINT LPAREN NAME RPAREN SEMI',
+       'PRINT LPAREN expr RPAREN SEMI',
+       'PRINT LPAREN NUMBER RPAREN SEMI')
+    def statement(self, p):
+        return ('PRINT_STATEMENT', p[2])
+
     # *********************************  Expression Operator Expression  ********************************* #
     @_('expr PLUS expr',
        'expr MINUS expr',
@@ -82,5 +133,5 @@ class CalcParser(Parser):
 if __name__ == '__main__':
     lexer = Lexer.CalcLexer()
     parser = CalcParser()
-    text = 'FOR (12)  TO  (39) {IF(3>3){SET @var 3;} ELSE { 303 + 3}}'
+    text = 'println!();'
     print(parser.parse(lexer.tokenize(text)))

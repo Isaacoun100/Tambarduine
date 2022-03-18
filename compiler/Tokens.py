@@ -2,11 +2,14 @@
 t_ignore = ' \t'
 
 tokens = {  # Literals (identifier)
-    'NAME', 'NUMBER', 'IF', 'ELSE', 'FOR', 'TO', 'STEP', 'SET', 'EN_CASO',
-    'CUANDO', 'EN_TONS', 'SI_NO', 'FIN_EN_CASO',
+    'NAME', 'NUMBER', 'STRING', 'IF', 'ELSE', 'FOR', 'TO', 'STEP', 'SET', 'EN_CASO',
+    'CUANDO', 'EN_TONS', 'SI_NO', 'FIN_EN_CASO', 'NEGATION', 'TRUE_OP', 'FALSE_OP', 'ABANICO',
+    'VERTICAL', 'PERCUTOR', 'GOLPE', 'VIBRATO', 'METRONOMO', 'PRINT', 'LETTER_A', 'LETTER_B', 'LETTER_I', 'LETTER_D',
 
     # Operators (+, -, *, **, //, / , <, <=,  >, >=, ==, <>)
-    'PLUS', 'MINUS', 'TIMES', 'INT_DIVIDE', 'DIVIDE', 'MODULE',
+    'PLUS',
+    'MINUS', 'TIMES',
+    'INT_DIVIDE', 'DIVIDE', 'MODULE',
 
     'LT', 'LE', 'GT', 'GE', 'EQUAL', 'NOT_EQUAL',
 
@@ -37,13 +40,33 @@ t_NE = r'<>'
 # Assignment
 t_ASSIGN = r'='
 
-# Reserved words
+# Reserved words 'NEGATION', 'TRUE_OP', 'FALSE_OP', 'ABANICO',
+#     'VERTICAL', 'PERCUTOR', 'GOLPE', 'VIBRATO', 'METRONOMO', 'PRINT',
 t_IF = 'IF'
 t_ELSE = 'ELSE'
 t_FOR = 'FOR'
 t_TO = 'TO'
 t_STEP = 'STEP'
 t_SET = 'SET'
+
+t_LETTER_A = 'A'
+t_LETTER_B = 'B'
+
+t_LETTER_I = 'I'
+t_LETTER_D = 'D'
+
+t_ABANICO = 'Abanico'
+t_VERTICAL = 'Vertical'
+t_PERCUTOR = 'Percutor'
+t_GOLPE = 'Golpe'
+t_VIBRATO = 'Vibrato'
+t_METRONOMO = 'Metronomo'
+t_PRINT = 'println!'
+
+t_NEGATION = ".Neg"
+t_TRUE_OP = '.T'
+t_FALSE_OP = '.F'
+
 t_EN_CASO = 'EN_CASO'
 t_CUANDO = 'CUANDO'
 t_EN_TONS = 'EN_TONS'
