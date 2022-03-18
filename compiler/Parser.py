@@ -94,6 +94,20 @@ class CalcParser(Parser):
     def statement(self, p):
         return ('PRINT_STATEMENT', p[2])
 
+    # FALSE - TRUE OPERATORS
+    @_('NAME PERIOD LETTER_T SEMI')
+    def statement(self, p):
+        return ('BOOLAN_OP', p.NAME, 1)
+
+    @_('NAME PERIOD LETTER_F SEMI')
+    def statement(self, p):
+        return ('BOOLAN_OP', p.NAME, 0)
+
+    # NEGATION
+    @_('NAME PERIOD NEGATION SEMI')
+    def statement(self, p):
+        return ('BOOLEAN_NEGATION', p.NAME)
+
     # *********************************  Expression Operator Expression  ********************************* #
     @_('expr PLUS expr',
        'expr MINUS expr',
@@ -133,5 +147,5 @@ class CalcParser(Parser):
 if __name__ == '__main__':
     lexer = Lexer.CalcLexer()
     parser = CalcParser()
-    text = 'println!();'
+    text = '@var.Neg;'
     print(parser.parse(lexer.tokenize(text)))

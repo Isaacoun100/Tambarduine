@@ -79,10 +79,15 @@ class CalcLexer(Lexer):
     STRING = Tokens.t_STRING
     LETTER_A = Tokens.t_LETTER_A
     LETTER_B = Tokens.t_LETTER_B
-
     LETTER_D = Tokens.t_LETTER_D
     LETTER_I = Tokens.t_LETTER_I
+
+    LETTER_T = Tokens.t_LETTER_T
+    LETTER_F = Tokens.t_LETTER_F
+
     NEGATION = Tokens.t_NEGATION
+
+
     # Ignored pattern
     ignore_newline = r'\n+'
     ignore = ' \t'
