@@ -16,13 +16,25 @@ class CalcParser(Parser):
         self.names[p.NAME] = p.expr
         return ('assignment', p.NAME, p.expr)
 
+    # STATEMENTS
     @_('expr')
     def statement(self, p):
         return p.expr
 
+    # SET statement
     @_('SET NAME expr SEMI')
     def statement(self, p):
         return ('SET_VAR', p.NAME, p.expr)
+
+    # IF statement
+    @_('IF LPAREN expr RPAREN LBRACE statement RBRACE Else')
+    def statement(self, p):
+        return ('IF_EXPRESSION', p.expr, p.statement, p.Else)
+
+    # ELSE statement
+    @_('ELSE  LBRACE expr RBRACE')
+    def Else(self, p):
+        return ('ELSE_EXPRESSION', p.expr)
 
     # Expression Operator Expression
     @_('expr PLUS expr',
@@ -63,5 +75,5 @@ class CalcParser(Parser):
 if __name__ == '__main__':
     lexer = Lexer.CalcLexer()
     parser = CalcParser()
-    text = ' SET @var 4;'
+    text = 'IF (3 > 23) {2 + 2} ELSE { 3 - 4}'
     print(parser.parse(lexer.tokenize(text)))
