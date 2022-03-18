@@ -20,6 +20,10 @@ class CalcParser(Parser):
     def statement(self, p):
         return p.expr
 
+    @_('SET NAME expr SEMI')
+    def statement(self, p):
+        return ('SET_VAR', p.NAME, p.expr)
+
     # Expression Operator Expression
     @_('expr PLUS expr',
        'expr MINUS expr',
@@ -59,5 +63,5 @@ class CalcParser(Parser):
 if __name__ == '__main__':
     lexer = Lexer.CalcLexer()
     parser = CalcParser()
-    text = ' 3 < 3 + 4'
+    text = ' SET @var 4;'
     print(parser.parse(lexer.tokenize(text)))

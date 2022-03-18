@@ -1,12 +1,29 @@
 from sly import Lexer
 import Tokens
 
+
 class CalcLexer(Lexer):
     tokens = Tokens.tokens
 
     # Tokens
     NAME = Tokens.t_ID
     NUMBER = Tokens.t_INTEGER
+
+    # Especial Tokens
+    IF = Tokens.t_IF
+    ELSE = Tokens.t_ELSE
+
+    FOR = Tokens.t_FOR
+    TO = Tokens.t_TO
+    STEP = Tokens.t_STEP
+
+    SET = Tokens.t_SET
+
+    EN_CASO = Tokens.t_EN_CASO
+    CUANDO = Tokens.t_CUANDO
+    EN_TONS = Tokens.t_EN_TONS
+    SI_NO = Tokens.t_SI_NO
+    FIN_EN_CASO = Tokens.t_FIN_EN_CASO
 
     # Operators
     # todo: Agregar operador exponencial

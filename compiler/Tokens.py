@@ -2,10 +2,11 @@
 t_ignore = ' \t'
 
 tokens = {  # Literals (identifier)
-    'NAME', 'NUMBER',
+    'NAME', 'NUMBER', 'IF', 'ELSE', 'FOR', 'TO', 'STEP', 'SET', 'EN_CASO',
+    'CUANDO', 'EN_TONS', 'SI_NO', 'FIN_EN_CASO',
 
     # Operators (+, -, *, **, //, / , <, <=,  >, >=, ==, <>)
-    'PLUS', 'MINUS', 'TIMES','INT_DIVIDE', 'DIVIDE', 'MODULE',
+    'PLUS', 'MINUS', 'TIMES', 'INT_DIVIDE', 'DIVIDE', 'MODULE',
 
     'LT', 'LE', 'GT', 'GE', 'EQUAL', 'NOT_EQUAL',
 
@@ -33,9 +34,21 @@ t_GE = r'>='
 t_EQ = r'=='
 t_NE = r'<>'
 
-
 # Assignment
 t_ASSIGN = r'='
+
+# Reserved words
+t_IF = 'IF'
+t_ELSE = 'ELSE'
+t_FOR = 'FOR'
+t_TO = 'TO'
+t_STEP = 'STEP'
+t_SET = 'SET'
+t_EN_CASO = 'EN_CASO'
+t_CUANDO = 'CUANDO'
+t_EN_TONS = 'EN_TONS'
+t_SI_NO = 'SI_NO'
+t_FIN_EN_CASO = 'FIN_EN_CASO'
 
 # Delimeters
 t_LPAREN = r'\('
