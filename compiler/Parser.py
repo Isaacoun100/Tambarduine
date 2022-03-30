@@ -7,6 +7,7 @@ Class for the parser
 
 
 class CalcParser(Parser):
+    debugfile = 'parser.out'
     tokens = Lexer.CalcLexer.tokens
 
     def __init__(self):
@@ -22,6 +23,7 @@ class CalcParser(Parser):
     # DEFINITION OF EXPRESSION  **TERMINAL**
     @_('expr')
     def statement(self, p):
+
         return p.expr
 
     # ********************************* STATEMENTS *********************************#
@@ -41,9 +43,9 @@ class CalcParser(Parser):
         return ('IF_EXPRESSION', p.expr, p.statement, p.Else)
 
     # ELSE statement
-    @_('ELSE  LBRACE expr RBRACE')
+    @_('ELSE  LBRACE statement RBRACE')
     def Else(self, p):
-        return ('ELSE_EXPRESSION', p.expr)
+        return ('ELSE_EXPRESSION', p.statement)
 
     # FOR statement
     @_('FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE')
@@ -55,11 +57,39 @@ class CalcParser(Parser):
     def statement(self, p):
         return ('FOR_EXPRESSION', p[2], p[6], 1, p.statement)
 
+    # En Caso <identifier>
+    @_('EN_CASO NAME Cuando')
+    def statement(self, p):
+        return ('EnCaso', p.NAME, p.Cuando)
+
+    # Cuando < relational operator> < ID | INTEGER > En tons <statements>
+    @_('CUANDO LT NUMBER EnTons')
+    def Cuando(self, p):
+        return ('Cuando', p[1], p.NUMBER, p.EnTons)
+
+    # En tons <statemetns> Sino <statements> Fin En caso |En tons <statemetns> Cuando <statements>
+    @_('EN_TONS LBRACE statement RBRACE Cuando')
+    def EnTons(self, p):
+        return ('EnTons-Cuando', p.statement, p.Cuando)
+
+    # En tons <statemetns> Sino <statements> Fin En caso |En tons <statemetns> Cuando <statements>
+    @_('EN_TONS LBRACE statement RBRACE Sino')
+    def EnTons(self, p):
+        return ('EnTons-Fin', p.statement, p.Sino)
+
+    # Si No
+    @_('SI_NO LBRACE statement RBRACE FIN_EN_CASO')
+    def Sino(self, p):
+        print("Not implemented, SINO")
+        return ('sino', p.statement)
+
     # ********************************* INCLUDED FUNCTIONS *********************************#
     # TODO: ADD "DEF" SYNTAX
     # TODO: AGREGAR PRODUCCIONES PARA PARAMETROS DE DEF
     # TODO: AGREGAR PARAMETRO PRINCIPAL
     # TODO: ADD EN_CASO
+
+    # TODO: test
 
     # Abanico A - B
     @_('ABANICO LPAREN LETTER_B RPAREN SEMI',
@@ -165,5 +195,5 @@ class CalcParser(Parser):
 if __name__ == '__main__':
     lexer = Lexer.CalcLexer()
     parser = CalcParser()
-    text = '@var.Neg;'
+    text = 'EN_CASO @var CUANDO < 2  EN_TONS { @var = 2 } CUANDO < 5  EN_TONS { @var = 2 } SI_NO{ @var = 5 } FIN_EN_CASO '
     print(parser.parse(lexer.tokenize(text)))
