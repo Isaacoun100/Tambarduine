@@ -66,6 +66,7 @@ class CalcLexer(Lexer):
     COLON = Tokens.t_COLON
 
     # FUNCTIONS
+    DEF = Tokens.t_DEF
     ABANICO = Tokens.t_ABANICO
     VERTICAL = Tokens.t_VERTICAL
     PERCUTOR = Tokens.t_PERCUTOR

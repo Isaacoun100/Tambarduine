@@ -83,12 +83,15 @@ class CalcParser(Parser):
         print("Not implemented, SINO")
         return ('sino', p.statement)
 
+    # def statement
+    @_('DEF NAME LPAREN RPAREN LBRACE statement RBRACE')
+    def statement(self, p):
+        return ('DEF_STATEMENT', p.NAME, p.statement)
+
     # ********************************* INCLUDED FUNCTIONS *********************************#
     # TODO: ADD "DEF" SYNTAX
     # TODO: AGREGAR PRODUCCIONES PARA PARAMETROS DE DEF
     # TODO: AGREGAR PARAMETRO PRINCIPAL
-    # TODO: ADD EN_CASO
-
     # TODO: test
 
     # Abanico A - B
@@ -195,5 +198,5 @@ class CalcParser(Parser):
 if __name__ == '__main__':
     lexer = Lexer.CalcLexer()
     parser = CalcParser()
-    text = 'EN_CASO @var CUANDO < 2  EN_TONS { @var = 2 } CUANDO < 5  EN_TONS { @var = 2 } SI_NO{ @var = 5 } FIN_EN_CASO '
+    text = 'EN_CASO @var CUANDO < 2  EN_TONS { DEF @metodo(){@var = 666} } CUANDO < 5  EN_TONS { @var = 2 } SI_NO{ @var = 5 } FIN_EN_CASO '
     print(parser.parse(lexer.tokenize(text)))

@@ -7,7 +7,7 @@ tokens = {  # Literals (identifier)
     'IF', 'ELSE', 'FOR', 'TO', 'STEP', 'SET',
     'EN_CASO', 'CUANDO', 'EN_TONS', 'SI_NO', 'FIN_EN_CASO', 'NEGATION',
     'ABANICO', 'VERTICAL', 'PERCUTOR', 'GOLPE', 'VIBRATO', 'METRONOMO',
-    'PRINT',
+    'PRINT', 'DEF',
     # SPECIAL LETTERS FOR PARAMS
     'LETTER_A', 'LETTER_B', 'LETTER_I', 'LETTER_D', 'LETTER_F', 'LETTER_T',
 
@@ -49,6 +49,7 @@ t_FOR = 'FOR'
 t_TO = 'TO'
 t_STEP = 'STEP'
 t_SET = 'SET'
+t_DEF = 'DEF'
 
 t_LETTER_A = 'A'
 t_LETTER_B = 'B'
