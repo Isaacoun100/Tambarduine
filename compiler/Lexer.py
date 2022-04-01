@@ -1,3 +1,6 @@
+#  Copyright (c) 2022.
+#  Code made by Eduardo Zumbado Granados.
+
 from sly import Lexer
 import Tokens
 
