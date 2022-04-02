@@ -97,20 +97,27 @@ class IDE:
         editmenu.add_command(label="  Go to line  ", command = self.askGoTo)
 
     def onOpen(self):
-        print(filedialog.askopenfilename(initialdir = "/",title = "Open file",filetypes = (("Python files","*.py;*.pyw"),("All files","*.*"))))
+        path = filedialog.askopenfilename( initialdir = "/",title =
+            "Open file",filetypes = (("Tambarduine files","*.tmn"),
+            ("All files","*.*")))
+
+        with open(path,"r") as f:
+            code=""
+            for line in f:
+                code+=line
+
+        self.setCode(code)
 
     def onSave(self):
-        print(filedialog.asksaveasfilename(initialdir = "/",title = "Save as",filetypes = (("Python files","*.py;*.pyw"),("All files","*.*"))))
+        path = filedialog.asksaveasfilename(initialdir = "/",title =
+            "Save as",filetypes = (("Python files","*.tmn;"),
+            ("All files","*.*")))
 
     def onExit(self):
         self.ide_window.destroy()
 
     def darkMode(self, myCanvas):
         myCanvas.configure(bg="#21252B")
-        myCanvas.pack(fill="both", expand=True)
-
-    def lightMode(self, myCanvas):
-        myCanvas.configure(bg="#F8EFE6")
         myCanvas.pack(fill="both", expand=True)
 
     def getCode(self):
@@ -133,6 +140,11 @@ class IDE:
         self.output_Text.config(state=NORMAL)
         self.output_Text.insert(END, '\n'+message)
         self.output_Text.config(state=DISABLED)
+
+    def setCode(self, message):
+        #Write on the read only console
+        self.code_Text.delete('1.0', END)
+        self.code_Text.insert(END,message)
 
     def goToLine(self, line, column):
         self.code_Text.see("%d.%d" % (line + 1, column + 1))
