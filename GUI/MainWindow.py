@@ -110,8 +110,15 @@ class IDE:
 
     def onSave(self):
         path = filedialog.asksaveasfilename(initialdir = "/",title =
-            "Save as",filetypes = (("Python files","*.tmn;"),
+            "Save as",filetypes = (("Tambarduine files","*.tmn"),
             ("All files","*.*")))
+
+        file = open(path, "w")
+        code = self.getCode()
+        print(code)
+        file.write(code)
+        file.close()
+
 
     def onExit(self):
         self.ide_window.destroy()
@@ -122,7 +129,8 @@ class IDE:
 
     def getCode(self):
         code = self.code_Text.get("1.0",END)
-        self.setConsole(code)
+        #self.setConsole(code)
+        return code
 
     def console(self):
 
