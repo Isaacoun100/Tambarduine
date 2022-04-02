@@ -3,6 +3,8 @@
 
 import Lexer
 from sly import Parser
+from AST.Node import *
+from AST.AbstractSyntaxTree import *
 
 """
 Class for the parser
@@ -17,8 +19,15 @@ class CalcParser(Parser):
 
     @_('NAME ASSIGN expr')
     def statement(self, p):
+        token = "assignment"
+        children = [p.NAME, p.expr]
+        # Create the node and fill its children and GYM
+        node = Assignment()
+        node.setToken(token)
+        node.setChildren(children)
+
         self.names[p.NAME] = p.expr
-        return ('assignment', p.NAME, p.expr)
+        return node
 
     # ********************************* EXPRESSION *********************************#
 
@@ -38,56 +47,87 @@ class CalcParser(Parser):
     @_('SET NAME expr SEMI')
     def statement(self, p):
         # SET NODE
+        setNode = Set()
         # Token: ("SET_statement, p.Name, p.expr)
+        token = "Set-statement"
+        setNode.setToken(token)
         # Children: [p.Name, p.expr]
-        return ('SET_statement', p.NAME, p.expr)
+        children = [p.NAME, p.expr]
+        return setNode
 
     # IF statement
     @_('IF LPAREN expr RPAREN LBRACE statement RBRACE Else')
     def statement(self, p):
-        # todo: IF NODE
         # IF NODE
+        node = If()
         # Token: ('IF_statement', p.expr, p.statement, p.Else)
+        token = "If-statement"
         # Children: [p.expr, p.statement, p.Else]
-        return ('IF_statement', p.expr, p.statement, p.Else)
+        children = [p.expr, p.statement, p.Else]
+        return Node
 
     # ELSE statement
     @_('ELSE  LBRACE statement RBRACE')
     def Else(self, p):
-        # todo: ELSE NODDE
         # ELSE Node
+        node = Else()
+
         # Token: ("ELSE_statement, p.statement)
+        token = "Else"
         # Children: [p.statement]
-        return ('ELSE_statement', p.statement)
+        children = [p.statement]
+        return node
 
     # FOR statement
     @_('FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE')
     def statement(self, p):
-        # todo: FOR NODE
         # FOR Node
-        # Token: ("FOR_statement,p[2], p[6], p[10], p.statement)
+        node = For()
+        # Token: ("FOR_statement,p[2], p[6], p[10], p.statement
+        token = "FOR-statement"
+
         # Children: [p[2], p[6], p[10], p.statement]
-        return ('FOR_statement', p[2], p[6], p[10], p.statement)
+        n3 = p[10]
+        n1 = p[2]
+        n2 = p[6]
+        children = [n1, n2, n3, p.statement]
+        return node
 
     # FOR statement NO STEP
     @_('FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE')
     def statement(self, p):
         # FOR Node
-        # Token: ("FOR_statement,p[2], p[6], 1, p.statement)
-        # Children: [p[2], p[6], 1, p.statement]
-        return ('FOR_statement', p[2], p[6], 1, p.statement)
+        node = For()
+        # Token: ("FOR_statement,p[2], p[6], p[10], p.statement
+        token = "FOR-statement"
+
+        # Children: [p[2], p[6], p[10], p.statement]
+        n3 = 1
+        n1 = p[2]
+        n2 = p[6]
+        children = [n1, n2, n3, p.statement]
+
+        node.setChildren(children)
+        node.setToken(token)
+
+        return node
 
     # En Caso <identifier>
     @_('EN_CASO NAME Cuando')
     def statement(self, p):
-        # todo: EN CASO NODE
         # EN_CASO Node
+        node = En_Caso()
         # Token: ("EnCaso_statement", p.NAME, p.Cuando)
+        token = "EnCaso"
         # Children: [p.NAME, p.Cuando]
-        return ('EnCaso_statement', p.NAME, p.Cuando)
+        token = [p.NAME, p.Cuando]
+        children = [p.NAME, p.Cuando]
+        node.setChildren(children)
+        node.setToken(token)
+
+        return node
 
     # Cuando < relational operator> < ID | INTEGER > En tons <statements>
-    # todo: revisar el caso en que no es un numero y si un NAME
     @_('CUANDO LT NUMBER EnTons',
        'CUANDO LE NUMBER EnTons',
        'CUANDO GT NUMBER EnTons',
@@ -95,51 +135,75 @@ class CalcParser(Parser):
        'CUANDO EQUAL NUMBER EnTons',
        'CUANDO NOT_EQUAL NUMBER EnTons')
     def Cuando(self, p):
-        # todo: Cuando node
         # Cuando_statement Node
+        node = Cuando_statement()
         # Token: ('CUANDO_statement', p[1], p.NUMBER, p.EnTons)
+        token = "Cuando"
+        node.setToken(token)
         # Children: [p[1], p.NUMBER,p.EnTons]
-        return ('CUANDO_statement', p[1], p.NUMBER, p.EnTons)
+        children = [p[1], p.NUMBER, p.EnTons]
+        node.setChildren(children)
+        return node
 
     # En tons <statemetns> Sino <statements> Fin En caso |En tons <statemetns> Cuando <statements>
     @_('EN_TONS LBRACE statement RBRACE Cuando')
     def EnTons(self, p):
-        # todo: EnTons Node
         # EnTons Node
+        node = EnTons_statement()
         # Token: ('EnTons-Cuando_statement', p.statement, p.Cuando)
+        token = "EnTons"
+        node.setToken(token)
         # Children: [p.statement, p.Cuando]
-        return ('EnTons-Cuando_statement', p.statement, p.Cuando)
+        children = [p.statement, p.Cuando]
+        node.setChildren(children)
+        return node
 
     # En tons <statemetns> Sino <statements> Fin En caso |En tons <statemetns> Cuando <statements>
     @_('EN_TONS LBRACE statement RBRACE Sino')
     def EnTons(self, p):
         # EnTons Node
-        # Token: ('EnTons-Fin_statement', p.statement, p.Sino)
-        # Children: [p.statement, p.Sino]
+        node = EnTons_statement()
 
-        return ('EnTons-Fin_statement', p.statement, p.Sino)
+        # Token: ('EnTons-Fin_statement', p.statement, p.Sino)
+        token = "EnTons"
+        node.setToken(token)
+        # Children: [p.statement, p.Sino]
+        children = [p.statement, p.Sino]
+        node.setChildren(children)
+
+        return node
 
     # Si No
     @_('SI_NO LBRACE statement RBRACE FIN_EN_CASO')
     def Sino(self, p):
-        # todo: Sino Node
         # SiNo Node
-        # Token: (SiNo_statement, p.statement)
-        # Children: [p.statement]
+        node = Sino_statement()
 
-        print("Not implemented, SINO")
-        return ('SiNo_statement', p.statement)
+        # Token: (SiNo_statement, p.statement)
+        token = "Sino"
+        node.setToken(token)
+
+        # Children: [p.statement]
+        children = [p.statement]
+        node.setChildren(children)
+
+        return node
 
     # def statement
     @_('DEF NAME LPAREN RPAREN LBRACE statement RBRACE')
     def statement(self, p):
-        # todo: Def NODE
         # DEF Node
-        # Token: (DEF_statement, p.NAME, p.statemen)
+        node = Def()
+
+        # Token: (DEF_statement, p.NAME, p.statement)
+        token = "Def"
+        node.setToken(token)
         # Children: (p.NAME, p.statement)
+        children = [p.NAME, p.statement]
+        node.setChildren(children)
 
         # todo: where should I add the symbol table for the scope???
-        return ('DEF_statement', p.NAME, p.statement)
+        return node
 
     # ********************************* INCLUDED FUNCTIONS *********************************#
     # TODO: AGREGAR PRODUCCIONES PARA PARAMETROS DE DEF
@@ -151,18 +215,28 @@ class CalcParser(Parser):
        'ABANICO LPAREN LETTER_A RPAREN SEMI')
     def statement(self, p):
         # Abanico Node
+        node = Abanico()
         # Token: (ABANICO_statement, p[2])
+        token = "Abanico"
+        node.setToken(token)
         # Children: [p[2]]
-        return ('ABANICO_statement', p[2])
+        children = [p[2]]
+        node.setChildren(children)
+        return node
 
     # Vertical I - D
     @_('VERTICAL LPAREN LETTER_I RPAREN SEMI',
        'VERTICAL LPAREN LETTER_D RPAREN SEMI')
     def statement(self, p):
         # Vertical Node
+        node = Vertical()
         # Token: (VERTICAL_statement, p[2])
+        token = "Vertical"
+        node.setToken(token)
         # Children: [p[2]]
-        return ('VERTICAL_statement', p[2])
+        children = [p[2]]
+        node.setChildren(children)
+        return node
 
     # PERCUTOR A - B - I - D
     @_('PERCUTOR LPAREN LETTER_A RPAREN SEMI',
@@ -171,9 +245,14 @@ class CalcParser(Parser):
        'PERCUTOR LPAREN LETTER_I RPAREN SEMI')
     def statement(self, p):
         # Percutor Node
+        node = Percutor()
         # Token: (PERCUTOR_statemen, p[2])
+        token = "Percutor"
+        node.setToken(token)
         # Children: [p[2]]
-        return ('PERCUTOR_statemen', p[2])
+        children = [p[2]]
+        node.setChildren(children)
+        return node
 
     # PERCUTOR AMBOS LADOS
     @_(
@@ -181,33 +260,55 @@ class CalcParser(Parser):
         'PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI', )
     def statement(self, p):
         # Percutor Node
+        node = Percutor()
         # Token: (PERCUTOR_statemen, p[2] + p[3])
+        token = "Percutor"
+        node.setToken(token)
         # Children: [p[2]]
-        return ('PERCUTOR_statemen', p[2] + p[3])
+        input = str(p[2]) + str(p[3])
+        children = [input]
+        node.setChildren(children)
+        return node
 
     # GOLPE
     @_('GOLPE LPAREN RPAREN SEMI')
     def statement(self, p):
         # Golpe Node
+        node = Golpe()
+
         # Token: (GOLPE_statement, 1)
+        token = "Golpe"
+        node.setToken(token)
         # Children: [1]
-        return ('GOLPE_statement', 1)
+        children = [1]
+        node.setChildren(children)
+        return node
 
     # VIBRATO
     @_('VIBRATO LPAREN NUMBER RPAREN SEMI')
     def statement(self, p):
-        # Vibrato Node
+        # Vibrato Node]
+        node = Vibrato()
         # Token: (VIBRATO_statement, p.NUMBER)
+        token = "Vibrato"
+        node.setToken(token)
         # Children: [p.NUMBER]
-        return ('VIBRATO_STATEMENT', p.NUMBER)
+        children = [p.NUMBER]
+        node.setChildren(children)
+        return node
 
     # METRONOMO
     @_('METRONOMO LPAREN LETTER_A RPAREN SEMI',
        'METRONOMO LPAREN LETTER_D RPAREN SEMI')
     def statement(self, p):
         # Metronomo Node
+        node = Metronomo()
         # Token: (METRONOMO_statement,p[2])
-        # Children: [p[2]]
+        token = "Metronomo"
+        node.setToken(token)
+        # Children: [p[2]] -> A | D
+        children = [p[2]]
+        node.setChildren(children)
         return ('METRONOMO_statement', p[2])
 
     # PRINT
@@ -217,9 +318,15 @@ class CalcParser(Parser):
        'PRINT LPAREN NUMBER RPAREN SEMI')
     def statement(self, p):
         # Print Node
+        node = Print()
+
         # Token: (PRINT_statement)
+        token = "Print"
+        node.setToken(token)
         # Children: [p[2])
-        return ('PRINT_statement', p[2])
+        children = [p[2]]
+        node.setChildren(children)
+        return node
 
     # todo: simplificar el .F y .T en uno solo
 
@@ -227,24 +334,42 @@ class CalcParser(Parser):
     @_('NAME PERIOD LETTER_T SEMI')
     def statement(self, p):
         # BoolOp Node
+        node = BoolOp()
         # Token: (BOOLOP_statement, p.NAME, 1)
+        token = "Bool Op"
+        node.setToken(token)
         # Children: [p.NAME, 1]
-        return ('BOOLOP_statement', p.NAME, 1)
+        children = [p.NAME, 1]
+        node.setChildren(children)
+        return node
 
     @_('NAME PERIOD LETTER_F SEMI')
     def statement(self, p):
         # BoolOp Node
+        node = BoolOp()
+
         # Token: (BOOLOP_statement, p.NAME, 0)
-        # Children: [p.NAME, 0]
-        return ('BOOLOP_statement', p.NAME, 0)
+        token = "Bool Op"
+        node.setToken(token)
+
+        # Children: [p.NAME, 1]
+        children = [p.NAME, 0]
+        node.setChildren(children)
+        return node
 
     # NEGATION
     @_('NAME PERIOD NEGATION SEMI')
     def statement(self, p):
         # Negation Node
+        node = Negation()
+
         # Token: (BOOL_NEG_statement,p.NAME)
+        token = "Bool Neg"
+        node.setToken(token)
         # Children: [p.NAME]
-        return ('BOOL_NEG_statement', p.NAME)
+        children = [p.NAME]
+        node.setChildren(children)
+        return node
 
     # *********************************  Expression Operator Expression  ********************************* #
     @_('expr PLUS expr',
@@ -255,10 +380,18 @@ class CalcParser(Parser):
        'expr INT_DIVIDE expr')
     def expr(self, p):
         # Expression Node
+        operator = p[1]
+        node = Expression(operator)
         # Token: ('binary-expression', p[1], p.expr0, p.expr1)
+        token = "Binary-Expression"
+        node.setToken(token)
         # Operator: p[1]
+        node.setOperator(operator)
         # Children: [p.expr0, p.expr1]
-        return ('binary-expression', p[1], p.expr0, p.expr1)
+        children = [p.expr0, p.expr1]
+        node.setChildren(children)
+
+        return node
 
     @_('expr LT expr',
        'expr LE expr',
@@ -268,17 +401,30 @@ class CalcParser(Parser):
        'expr NOT_EQUAL expr', )
     def expr(self, p):
         # Expression Node
+        operator = p[1]
+        node = Expression(operator)
         # Token: ('condition-expression', p[1], p.expr0, p.expr1)
+        token = "condition-Expression"
+        node.setToken(token)
         # Operator: p[1]
+        node.setOperator(operator)
         # Children: [p.expr0, p.expr1]
-        return ('condition-expression', p[1], p.expr0, p.expr1)
+        children = [p.expr0, p.expr1]
+        node.setChildren(children)
+
+        return node
 
     @_('LPAREN expr RPAREN')
     def expr(self, p):
         # Expression Node
+        node = Expression()
         # Token: ('grouped', p.expr)
+        token = "Grouped"
+        node.setToken(token)
         # Children: [p.expr]
-        return ('grouped', p.expr)
+        children = [p.expr]
+        node.setChildren(children)
+        return node
 
     @_('NUMBER')
     def expr(self, p):
@@ -286,7 +432,7 @@ class CalcParser(Parser):
         # Token: ('int', p.NUMBER)
         # Children: []
         # Value: p.NUMBER
-        return ('int', int(p.NUMBER))
+        return int(p.NUMBER)
 
     @_('NAME')
     def expr(self, p):
@@ -301,12 +447,3 @@ class CalcParser(Parser):
             return 0
 
 
-if __name__ == '__main__':
-    lexer = Lexer.CalcLexer()
-    parser = CalcParser()
-    text = 'EN_CASO @var CUANDO < 2  EN_TONS { DEF @metodo(){@var1 = 666} } CUANDO < 5  EN_TONS { @var2 = 2 } SI_NO{ @var3 = 5 } FIN_EN_CASO '
-    print(parser.parse(lexer.tokenize(text)))
-    ## Symbol table,,,, print !!!!!!!!
-    print("Symbol Table: ")
-    for name in parser.names:
-        print("Name: ", name, "Value: ", parser.names[name])
