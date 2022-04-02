@@ -96,7 +96,6 @@ class IDE:
         #Runmenu options definition
         editmenu.add_command(label="  Go to line  ", command = self.askGoTo)
 
-
     def onOpen(self):
         print(filedialog.askopenfilename(initialdir = "/",title = "Open file",filetypes = (("Python files","*.py;*.pyw"),("All files","*.*"))))
 
@@ -136,7 +135,7 @@ class IDE:
         self.output_Text.config(state=DISABLED)
 
     def goToLine(self, line, column):
-        self.code_Text.mark_set(INSERT, "%d.%d" % (line + 1, column + 1))
+        self.code_Text.see("%d.%d" % (line + 1, column + 1))
         self.code_Text.focus_set()
 
     def askGoTo(self):
