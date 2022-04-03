@@ -1,6 +1,6 @@
 #  Copyright (c) 2022.
 #  Code made by Eduardo Zumbado Granados.
-
+import time
 from unittest import TestCase
 from compiler.Compiler import *
 from CodeGenerator import *
@@ -37,7 +37,7 @@ class TestCompiler(TestCase):
 
     def test_if(self):
         print(" -------------------- IF test --------------------")
-        text = 'IF ( 2 < 23) { SET @var2, 20 ;} ELSE {SET @var2, 30 ;}'
+        text = 'IF ( 8 < 23) { Metronomo(A, 1);} ELSE {Metronomo(A, 2);}'
 
         ast = self.__compiler.compile(text)
         ast.print()
@@ -75,7 +75,7 @@ class TestCompiler(TestCase):
                'SI_NO{\n ' \
                '@var3 = 5; \n' \
                '} \n' \
-               'FIN_EN_CASO '
+               'FIN_EN_CASO\n'
 
         ast = self.__compiler.compile(text)
         ast.print()
@@ -95,6 +95,7 @@ class TestCompiler(TestCase):
         print("Result of compiling:\n", result)
 
     def test_abanico(self):
+
         print(" -------------------- Abanico test --------------------")
         text = 'Abanico(B);'
 
@@ -130,10 +131,9 @@ class TestCompiler(TestCase):
         result = cg.translate_node(node)
         print("Result of compiling: ", result)
 
-
     def test_golpe(self):
         print(" -------------------- Golpe test --------------------")
-        text = 'Golpe();'
+        text = 'Golpe(T);'
 
         ast = self.__compiler.compile(text)
         ast.print()
@@ -145,7 +145,7 @@ class TestCompiler(TestCase):
 
     def test_vibrato(self):
         print(" -------------------- Vibrato test --------------------")
-        text = 'Vibrato(343);'
+        text = 'Vibrato(666);'
 
         ast = self.__compiler.compile(text)
         ast.print()
@@ -199,7 +199,6 @@ class TestCompiler(TestCase):
         cg = CodeGenerator()
         result = cg.translate_node(node)
         print("Result of compiling: ", result)
-
 
         print(" -------------------- Negation  test --------------------")
         text = '@var.Neg;'

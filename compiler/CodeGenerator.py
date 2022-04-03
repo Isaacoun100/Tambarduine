@@ -112,7 +112,7 @@ class CodeGenerator:
         children = node.getChildren()
 
         param = children[0]
-        return "Vibrato(" + param + ")"
+        return "Vibrato(" + param  +", T" + ")"
 
     # Metronomo
     def __translate_metronomo(self, node: Node.Metronomo):
@@ -120,7 +120,8 @@ class CodeGenerator:
         state = children[0]
         time = children[1]
 
-        return "Metronomo(" + state + ", " + time + ")"
+        # return "Metronomo(" + state + ", " + time + ")"
+        return "global T = " + time
 
     # Print
     def __translate_print(self, node: Node.Print):
