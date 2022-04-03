@@ -64,6 +64,7 @@ class CalcLexer(Lexer):
 
     # Punto y Coma
     SEMI = Tokens.t_SEMI
+    COMMA = Tokens.t_COMMA
 
     # Dos puntos
     COLON = Tokens.t_COLON

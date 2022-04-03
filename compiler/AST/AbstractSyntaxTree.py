@@ -35,6 +35,7 @@ class AST:
         # Condition when the current
         # node is the root node
         if depth == 0:
+
             print(node.token)
 
         # Condition when the node is

@@ -17,7 +17,7 @@ class CalcParser(Parser):
     def __init__(self):
         self.names = {}
 
-    @_('NAME ASSIGN expr')
+    @_('NAME ASSIGN expr SEMI')
     def statement(self, p):
         token = "assignment"
         children = [p.NAME, p.expr]
@@ -44,16 +44,17 @@ class CalcParser(Parser):
     # TODO: AGREGAR EL BLOQUE DE STATEMENTS BRACKET STATEMENTS BRACKET (SIMPLIFICACION DEL CODIGO)
 
     # SET statement
-    @_('SET NAME expr SEMI')
+    @_('SET NAME COMMA expr SEMI')
     def statement(self, p):
         # SET NODE
-        setNode = Set()
+        node = Set()
         # Token: ("SET_statement, p.Name, p.expr)
         token = "Set-statement"
-        setNode.setToken(token)
+        node.setToken(token)
         # Children: [p.Name, p.expr]
         children = [p.NAME, p.expr]
-        return setNode
+        node.setChildren(children)
+        return node
 
     # IF statement
     @_('IF LPAREN expr RPAREN LBRACE statement RBRACE Else')
@@ -62,9 +63,11 @@ class CalcParser(Parser):
         node = If()
         # Token: ('IF_statement', p.expr, p.statement, p.Else)
         token = "If-statement"
+        node.setToken(token)
         # Children: [p.expr, p.statement, p.Else]
         children = [p.expr, p.statement, p.Else]
-        return Node
+        node.setChildren(children)
+        return node
 
     # ELSE statement
     @_('ELSE  LBRACE statement RBRACE')
@@ -74,8 +77,10 @@ class CalcParser(Parser):
 
         # Token: ("ELSE_statement, p.statement)
         token = "Else"
+        node.setToken(token)
         # Children: [p.statement]
         children = [p.statement]
+        node.setChildren(children)
         return node
 
     # FOR statement
@@ -91,6 +96,8 @@ class CalcParser(Parser):
         n1 = p[2]
         n2 = p[6]
         children = [n1, n2, n3, p.statement]
+        node.setToken(token)
+        node.setChildren(children)
         return node
 
     # FOR statement NO STEP
@@ -309,7 +316,7 @@ class CalcParser(Parser):
         # Children: [p[2]] -> A | D
         children = [p[2]]
         node.setChildren(children)
-        return ('METRONOMO_statement', p[2])
+        return node
 
     # PRINT
     @_('PRINT LPAREN STRING RPAREN SEMI',
@@ -383,7 +390,7 @@ class CalcParser(Parser):
         operator = p[1]
         node = Expression(operator)
         # Token: ('binary-expression', p[1], p.expr0, p.expr1)
-        token = "Binary-Expression"
+        token = "Binary-Expression " + str(operator)
         node.setToken(token)
         # Operator: p[1]
         node.setOperator(operator)
@@ -404,7 +411,7 @@ class CalcParser(Parser):
         operator = p[1]
         node = Expression(operator)
         # Token: ('condition-expression', p[1], p.expr0, p.expr1)
-        token = "condition-Expression"
+        token = "condition-Expression " + str(operator)
         node.setToken(token)
         # Operator: p[1]
         node.setOperator(operator)
@@ -417,7 +424,7 @@ class CalcParser(Parser):
     @_('LPAREN expr RPAREN')
     def expr(self, p):
         # Expression Node
-        node = Expression()
+        node = Expression("")
         # Token: ('grouped', p.expr)
         token = "Grouped"
         node.setToken(token)
@@ -445,5 +452,3 @@ class CalcParser(Parser):
         except LookupError:
             print(f'Undefined name {p.NAME!r}')
             return 0
-
-
