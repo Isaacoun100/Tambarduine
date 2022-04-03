@@ -33,7 +33,7 @@ class TestCompiler(TestCase):
 
     def test_for_1(self):
         print(" -------------------- FOR (1) test --------------------")
-        text = 'FOR (1) TO (100) STEP (4) { Percutor(A); }'
+        text = 'FOR (0) TO (100) STEP (1) { Percutor(A); }'
 
         ast = self.__compiler.compile(text)
         ast.print()
@@ -60,6 +60,7 @@ class TestCompiler(TestCase):
                '@var3 = 5; \n' \
                '} \n' \
                'FIN_EN_CASO '
+
 
         ast = self.__compiler.compile(text)
         ast.print()
@@ -110,17 +111,18 @@ class TestCompiler(TestCase):
 
     def test_metronomo(self):
         print(" -------------------- Metronomo test --------------------")
-        text = 'Metronomo(A);'
+        text = 'Metronomo(A, 1);'
 
         ast = self.__compiler.compile(text)
         ast.print()
 
     def test_print(self):
         print(" -------------------- Print test --------------------")
-        text = 'println!(3+3);'
+        text = 'println!("Hola Mundo");'
 
         ast = self.__compiler.compile(text)
         ast.print()
+
     def test_binary_Ops(self):
         print(" -------------------- .F  test --------------------")
         text = '@var.F;'

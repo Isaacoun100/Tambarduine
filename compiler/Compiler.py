@@ -1,7 +1,7 @@
 #  Copyright (c) 2022.
 #  Code made by Eduardo Zumbado Granados.
 
-from Parser import *
+from Sintactic_Analysis.Parser import *
 from AST.AbstractSyntaxTree import *
 
 

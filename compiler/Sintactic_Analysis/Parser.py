@@ -1,9 +1,8 @@
 #  Copyright (c) 2022.
 #  Code made by Eduardo Zumbado Granados.
 
-import Lexer
+from Lexic_Analysis import Lexer
 from sly import Parser
-from AST.Node import *
 from AST.AbstractSyntaxTree import *
 
 """
@@ -25,9 +24,13 @@ class CalcParser(Parser):
         node = Assignment()
         node.setToken(token)
         node.setChildren(children)
+        if p.NAME in self.names:
 
-        self.names[p.NAME] = p.expr
+            self.names[p.NAME] = p.expr
+        else:
+            print("Error, variable no declarada")
         return node
+
 
     # ********************************* EXPRESSION *********************************#
 
@@ -305,8 +308,8 @@ class CalcParser(Parser):
         return node
 
     # METRONOMO
-    @_('METRONOMO LPAREN LETTER_A RPAREN SEMI',
-       'METRONOMO LPAREN LETTER_D RPAREN SEMI')
+    @_('METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN SEMI',
+       'METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN SEMI')
     def statement(self, p):
         # Metronomo Node
         node = Metronomo()
@@ -314,7 +317,7 @@ class CalcParser(Parser):
         token = "Metronomo"
         node.setToken(token)
         # Children: [p[2]] -> A | D
-        children = [p[2]]
+        children = [p[2], p.NUMBER]
         node.setChildren(children)
         return node
 

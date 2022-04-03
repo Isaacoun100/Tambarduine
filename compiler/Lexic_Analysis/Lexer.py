@@ -2,8 +2,8 @@
 #  Code made by Eduardo Zumbado Granados.
 
 from sly import Lexer
-import Tokens
 
+import Lexic_Analysis.Tokens as Tokens
 
 class CalcLexer(Lexer):
     tokens = Tokens.tokens
