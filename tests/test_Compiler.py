@@ -30,6 +30,11 @@ class TestCompiler(TestCase):
         ast = self.__compiler.compile(text)
         ast.print()
 
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling: ", result)
+
     def test_if(self):
         print(" -------------------- IF test --------------------")
         text = 'IF ( 2 < 23) { SET @var2, 20 ;} ELSE {SET @var2, 30 ;}'
@@ -84,12 +89,22 @@ class TestCompiler(TestCase):
         ast = self.__compiler.compile(text)
         ast.print()
 
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling:\n", result)
+
     def test_abanico(self):
         print(" -------------------- Abanico test --------------------")
         text = 'Abanico(B);'
 
         ast = self.__compiler.compile(text)
         ast.print()
+
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling: ", result)
 
     def test_vertical(self):
         print(" -------------------- Vertical test --------------------")
@@ -98,12 +113,23 @@ class TestCompiler(TestCase):
         ast = self.__compiler.compile(text)
         ast.print()
 
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling: ", result)
+
     def test_percutor(self):
         print(" -------------------- Percutor test --------------------")
         text = 'Percutor(AB);'
 
         ast = self.__compiler.compile(text)
         ast.print()
+
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling: ", result)
+
 
     def test_golpe(self):
         print(" -------------------- Golpe test --------------------")
@@ -112,12 +138,22 @@ class TestCompiler(TestCase):
         ast = self.__compiler.compile(text)
         ast.print()
 
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling: ", result)
+
     def test_vibrato(self):
         print(" -------------------- Vibrato test --------------------")
         text = 'Vibrato(343);'
 
         ast = self.__compiler.compile(text)
         ast.print()
+
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling: ", result)
 
     def test_metronomo(self):
         print(" -------------------- Metronomo test --------------------")
@@ -126,6 +162,11 @@ class TestCompiler(TestCase):
         ast = self.__compiler.compile(text)
         ast.print()
 
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling: ", result)
+
     def test_print(self):
         print(" -------------------- Print test --------------------")
         text = 'println!("Hola Mundo");'
@@ -133,16 +174,39 @@ class TestCompiler(TestCase):
         ast = self.__compiler.compile(text)
         ast.print()
 
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling: ", result)
+
     def test_binary_Ops(self):
         print(" -------------------- .F  test --------------------")
         text = '@var.F;'
         ast = self.__compiler.compile(text)
         ast.print()
+
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling: ", result)
+
         print(" -------------------- .T test --------------------")
         text = '@var.T;'
         ast = self.__compiler.compile(text)
         ast.print()
+
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling: ", result)
+
+
         print(" -------------------- Negation  test --------------------")
         text = '@var.Neg;'
         ast = self.__compiler.compile(text)
         ast.print()
+
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling: ", result)

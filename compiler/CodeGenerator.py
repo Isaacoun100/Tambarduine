@@ -14,13 +14,13 @@ class CodeGenerator:
     '''
 
     # Para el metodo SET
-    def __translate_set(self, node):
+    def __translate_set(self, node: Node.Set):
         children = node.getChildren()
 
         variable = children[0]
         expression = children[1]
 
-        return (variable + " = " + self.translate_node(expression))
+        return (self.translate_node(variable) + " = " + self.translate_node(expression))
 
     # Para el metodo Assignment
     def __translate_assign(self, node: Node.Assignment):
@@ -29,7 +29,7 @@ class CodeGenerator:
         variable = children[0]
         expression = children[1]
 
-        return (variable + " = " + self.translate_node(expression))
+        return (self.translate_node(variable) + " = " + self.translate_node(expression))
 
     # Para el metodo IF
     def __translate_if(self, node: Node.If):
@@ -43,7 +43,7 @@ class CodeGenerator:
             statements) + "\n" + self.translate_node(Else)
 
     # Para el metodo ELSE
-    def __translate_Else(self, node):
+    def __translate_Else(self, node: Node.Else):
         children = node.getChildren()
 
         statements = children[0]
@@ -51,72 +51,103 @@ class CodeGenerator:
         return "else: \n" + indent + self.translate_node(statements)
 
     # Para el metodo For
-    def __translate_For(self):
+    def __translate_For(self, node: Node.For):
         pass
 
     # Para el metodo DEF
-    def __translate_def(self):
-        pass
+    def __translate_def(self, node: Node.Def):
+        children = node.getChildren()
+
+        name = children[0]
+        statements = children[1]
+
+        return "def " + name + "(): \n" + indent + self.translate_node(statements)
 
     # Para el metodo en caso
-    def __translate_EnCaso(self):
+    def __translate_EnCaso(self, node: Node.En_Caso):
         pass
 
     # Para el Cuando
-    def __translate_cuando(self):
+    def __translate_cuando(self, node: Node.Cuando_statement):
         pass
 
     # Para el Sino
-    def __translate_sino(self):
+    def __translate_sino(self, node: Node.Sino_statement):
         pass
 
     # Para el EnTons
-    def __trannslate_EnTons(self):
+    def __trannslate_EnTons(self, node: Node.EnTons_statement):
         pass
 
     # Abanico
-    def __translate_abanico(self):
-        pass
+    def __translate_abanico(self, node: Node.Abanico):
+        children = node.getChildren()
+        children = node.getChildren()
+
+        param = children[0]
+        return "Abanico(" + param + ")"
 
     # Vertical
-    def __translate_vertical(self):
-        pass
+    def __translate_vertical(self, node: Node.Vertical):
+        children = node.getChildren()
+
+        param = children[0]
+        return "Vertical(" + param + ")"
 
     # Percutor
-    def __translate_percutor(self):
-        pass
+    def __translate_percutor(self, node: Node.Percutor):
+        children = node.getChildren()
 
-    # Golpe
-    def __translate_golpe(self):
-        pass
+        param = children[0]
+        return "Percutor(" + param + ")"
+
+        # Golpe
+
+    def __translate_golpe(self, node: Node.Golpe):
+
+        return "Golpe()"
 
     # Vibrato
-    def __translate_vibrato(self):
-        pass
+    def __translate_vibrato(self, node: Node.Vibrato):
+        children = node.getChildren()
+
+        param = children[0]
+        return "Vibrato(" + param + ")"
 
     # Metronomo
-    def __translate_metronomo(self):
-        pass
+    def __translate_metronomo(self, node: Node.Metronomo):
+        children = node.getChildren()
+        state = children[0]
+        time = children[1]
+
+        return "Metronomo(" + state + ", " + time + ")"
 
     # Print
-    def __translate_print(self):
-        pass
+    def __translate_print(self, node: Node.Print):
+        children = node.getChildren()
+
+        param = children[0]
+        return "print(" + self.translate_node(param) + ")"
 
     # Negation
-    def __translate_negation(self):
-        pass
+    def __translate_negation(self, node: Node.Negation):
+        children = node.getChildren()
+        variable = children[0]
+        return "not " + variable
 
     # Bool Operator
-    def __translate_boolOp(self):
-        pass
+    def __translate_boolOp(self, node: Node.BoolOp):
+        children = node.getChildren()
+        var = children[0]
+        value = children[1]
 
-    # Binary Op
-    def __translate_binaryOP(self):
-        pass
+        result = ""
 
-    # Conditional Exp
-    def __translate_Condition_expr(self):
-        pass
+        if value:
+            result = "= True"
+        else:
+            result = "= False"
+        return var + result
 
     # Expression
     def __translate_expression(self, node: Node.Expression):
@@ -136,7 +167,7 @@ class CodeGenerator:
         '''
         if isinstance(node, Node.Set): return self.__translate_set(node)
 
-        if isinstance(node, Node.Assignment): return self.translate_assign(node)
+        if isinstance(node, Node.Assignment): return self.__translate_assign(node)
 
         if isinstance(node, Node.If): return self.__translate_if(node)
 
