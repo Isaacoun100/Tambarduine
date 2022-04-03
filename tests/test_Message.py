@@ -10,11 +10,11 @@ from Messages.Error import *
 
 class TestMessage(TestCase):
     __msg = Message()
-    __error1 = Error()
+    __error1 = Error(23)
     __error1.setBody("Error en la definicion de la variable")
     __error1.setLine(23)
 
-    __error2 = Error()
+    __error2 = Error(3)
     __error2.setBody("';' faltante")
     __error2.setLine(3)
 

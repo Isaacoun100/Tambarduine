@@ -455,3 +455,6 @@ class CalcParser(Parser):
         except LookupError:
             print(f'Undefined name {p.NAME!r}')
             return 0
+
+    def error(self, token):
+        super().error(token)

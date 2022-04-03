@@ -3,6 +3,7 @@
 
 from unittest import TestCase
 from compiler.Compiler import *
+from CodeGenerator import *
 
 
 class TestCompiler(TestCase):
@@ -12,10 +13,15 @@ class TestCompiler(TestCase):
         pass
 
     def test_Assignment(self):
-        print(" -------------------- Assignment test --------------------")
-        text = '@var = 2;'
+        print(" -------------------- Assignment test --------------------"),
+        text = '@var = 2 + 2 + 5*3;'
         ast = self.__compiler.compile(text)
         ast.print()
+
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling: ", result)
 
     def test_Set(self):
         print(" -------------------- SET test --------------------")
@@ -30,6 +36,11 @@ class TestCompiler(TestCase):
 
         ast = self.__compiler.compile(text)
         ast.print()
+
+        node = ast.getRoot()
+        cg = CodeGenerator()
+        result = cg.translate_node(node)
+        print("Result of compiling:\n", result)
 
     def test_for_1(self):
         print(" -------------------- FOR (1) test --------------------")
@@ -60,7 +71,6 @@ class TestCompiler(TestCase):
                '@var3 = 5; \n' \
                '} \n' \
                'FIN_EN_CASO '
-
 
         ast = self.__compiler.compile(text)
         ast.print()

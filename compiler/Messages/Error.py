@@ -6,7 +6,8 @@ from Messages.Output import Output
 class Error(Output):
     __line: int
 
-    def __init__(self):
+    def __init__(self, line):
+        self.__line = line
         Output.__init__(self)
 
     def getLine(self) -> int:
@@ -14,4 +15,3 @@ class Error(Output):
 
     def setLine(self, line: int):
         self.__line = line
-

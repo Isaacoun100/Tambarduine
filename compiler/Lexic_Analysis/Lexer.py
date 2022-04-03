@@ -1,9 +1,11 @@
 #  Copyright (c) 2022.
 #  Code made by Eduardo Zumbado Granados.
-
 from sly import Lexer
 
+import Messages.Error as E
+
 import Lexic_Analysis.Tokens as Tokens
+
 
 class CalcLexer(Lexer):
     tokens = Tokens.tokens
@@ -100,5 +102,11 @@ class CalcLexer(Lexer):
         self.lineno += t.value.count('\n')
 
     def error(self, t):
-        print("Illegal character '%s'" % t.value[0])
+        failure = E.Error(self.index)
+        msg = "Illegal character '%s'" % t.value[0]
+
+        failure.setBody(msg)
+        # comp.msgs.addOutput(failure)
+        print(msg)
+
         self.index += 1
