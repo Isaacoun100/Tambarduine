@@ -128,6 +128,8 @@ class IDE:
     def getCode(self):
 
         code = self.code_Text.get("1.0", END)
+
+        # todo: Codigo compilado
         result = self.__compiler.compile(code)
 
         self.setConsole(result)

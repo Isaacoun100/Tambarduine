@@ -4,7 +4,8 @@ from AST import AbstractSyntaxTree
 from AST import Node
 
 indent_spaces = 4
-indent = indent_spaces * "-"
+indent = indent_spaces * " "
+import_source = "import firmata.py"
 
 
 # Para el metodo SET
@@ -121,7 +122,7 @@ class CodeGenerator:
         time = children[1]
 
         # return "Metronomo(" + state + ", " + time + ")"
-        return "global T = " + time
+        return "T = " + time
 
     # Print
     def __translate_print(self, node: Node.Print):
@@ -221,7 +222,7 @@ class CodeGenerator:
 
     def compile(self, ast: AbstractSyntaxTree.AST):
 
-        result = self.translate_node(ast.getRoot())
+        result = import_source + "\n" + self.translate_node(ast.getRoot())
 
         # file.write(result)
         return result
