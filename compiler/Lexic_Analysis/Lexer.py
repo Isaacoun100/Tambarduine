@@ -2,9 +2,9 @@
 #  Code made by Eduardo Zumbado Granados.
 from sly import Lexer
 
-import Messages.Error as E
+import compiler.Messages.Error as E
 
-import Lexic_Analysis.Tokens as Tokens
+import compiler.Lexic_Analysis.Tokens as Tokens
 
 
 class CalcLexer(Lexer):

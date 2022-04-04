@@ -1,9 +1,9 @@
 #  Copyright (c) 2022.
 #  Code made by Eduardo Zumbado Granados.
 
-from Lexic_Analysis import Lexer
+from compiler.Lexic_Analysis import Lexer
 from sly import Parser
-from AST.AbstractSyntaxTree import *
+from compiler.AST.AbstractSyntaxTree import *
 
 """
 Class for the parser

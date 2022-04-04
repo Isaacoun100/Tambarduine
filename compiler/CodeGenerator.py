@@ -1,7 +1,7 @@
 #  Copyright (c) 2022.
 #  Code made by Eduardo Zumbado Granados.
-from AST import AbstractSyntaxTree
-from AST import Node
+from compiler.AST import AbstractSyntaxTree
+from compiler.AST import Node
 
 indent_spaces = 4
 indent = indent_spaces * " "
