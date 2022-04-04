@@ -112,7 +112,7 @@ class CodeGenerator:
         children = node.getChildren()
 
         param = children[0]
-        return "Vibrato(" + param  +", T" + ")"
+        return "Vibrato(" + param + ", T" + ")"
 
     # Metronomo
     def __translate_metronomo(self, node: Node.Metronomo):
@@ -216,4 +216,12 @@ class CodeGenerator:
         # is an terminal type
 
         else:
+
             return str(node)
+
+    def compile(self, ast: AbstractSyntaxTree.AST):
+
+        result = self.translate_node(ast.getRoot())
+
+        # file.write(result)
+        return result
