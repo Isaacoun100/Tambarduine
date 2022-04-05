@@ -1,6 +1,6 @@
 #  Copyright (c) 2022.
 #  Code made by Eduardo Zumbado Granados.
-from Messages.Output import Output
+from compiler.Messages.Output import Output
 
 
 class Error(Output):

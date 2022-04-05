@@ -1,10 +1,10 @@
 #  Copyright (c) 2022.
 #  Code made by Eduardo Zumbado Granados.
 
-from Sintactic_Analysis.Parser import *
-from AST.AbstractSyntaxTree import *
-from Messages import Message as msg
-from CodeGenerator import *
+from compiler.Sintactic_Analysis.Parser import *
+from compiler.AST.AbstractSyntaxTree import *
+from compiler.Messages import Message as msg
+from compiler.CodeGenerator import *
 
 msgs = msg.Message()
 

@@ -1,9 +1,7 @@
-from tkinter import *
-from tkinter import filedialog
-from tkinter import simpledialog
-
-from Compiler import Comp
-
+from tkinter            import *
+from compiler.Compiler  import Comp
+from tkinter            import filedialog
+from tkinter            import simpledialog
 
 class IDE:
     __compiler = Comp()
@@ -38,7 +36,7 @@ class IDE:
 
         # Key commands
         self.ide_window.bind('<Escape>', lambda e: self.onExit())
-        self.ide_window.bind('<F5>', lambda e: self.getCode())
+        self.ide_window.bind('<F5>', lambda e: self.compileCode())
 
     def startIDE(self):
 
@@ -89,8 +87,8 @@ class IDE:
         menubar.add_cascade(label="  Options  ", menu=runmenu)
 
         # Runmenu options definition
-        runmenu.add_command(label="  Compile  ", command=self.getCode)
-        runmenu.add_command(label="  Compile & Run  ", command=self.onExit)
+        runmenu.add_command(label="  Compile  ", command=self.compileCode)
+        runmenu.add_command(label="  Compile & Run  ", command=self.compileAndRun)
 
         # The Edit menu is being defined
         editmenu = Menu(menubar)
@@ -114,9 +112,15 @@ class IDE:
         self.setCode(code)
 
     def onSave(self):
-        path = filedialog.asksaveasfilename(initialdir="/", title=
-        "Save as", filetypes=(("Python files", "*.tmn;"),
-                              ("All files", "*.*")))
+        path = filedialog.asksaveasfilename(initialdir = "/",title =
+            "Save as",filetypes = (("Tambarduine files","*.tmn"),
+            ("All files","*.*")))
+
+        file = open(path, "w")
+        code = self.getCode()
+        print(code)
+        file.write(code)
+        file.close()
 
     def onExit(self):
         self.ide_window.destroy()
@@ -125,14 +129,24 @@ class IDE:
         myCanvas.configure(bg="#21252B")
         myCanvas.pack(fill="both", expand=True)
 
-    def getCode(self):
-
-        code = self.code_Text.get("1.0", END)
-
-        # todo: Codigo compilado
-        result = self.__compiler.compile(code)
-
+    def compileCode(self):
+        #Compiled code
+        code = self.getCode()
+        result = self.__compiler.compile( code )
+        file = open(r"GUI/executable.py","w")
+        file.write(result)
+        self.setConsole( code )
+        self.setConsole("--COMPILED CODE--")
         self.setConsole(result)
+
+    def compileAndRun(self):
+        self.compileCode()
+        from GUI import executable
+        executable()
+
+    def getCode(self):
+        code = self.code_Text.get("1.0",END)
+        return code
 
     def console(self):
 
