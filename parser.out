@@ -1,0 +1,3051 @@
+Grammar:
+
+Rule 0     S' -> statement
+Rule 1     statement -> NAME PERIOD NEGATION SEMI
+Rule 2     statement -> NAME PERIOD LETTER_F SEMI
+Rule 3     statement -> NAME PERIOD LETTER_T SEMI
+Rule 4     statement -> PRINT LPAREN NUMBER RPAREN SEMI
+Rule 5     statement -> PRINT LPAREN expr RPAREN SEMI
+Rule 6     statement -> PRINT LPAREN NAME RPAREN SEMI
+Rule 7     statement -> PRINT LPAREN STRING RPAREN SEMI
+Rule 8     statement -> METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN SEMI
+Rule 9     statement -> METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN SEMI
+Rule 10    statement -> VIBRATO LPAREN NUMBER RPAREN SEMI
+Rule 11    statement -> GOLPE LPAREN RPAREN SEMI
+Rule 12    statement -> PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI
+Rule 13    statement -> PERCUTOR LPAREN LETTER_A LETTER_B RPAREN SEMI
+Rule 14    statement -> PERCUTOR LPAREN LETTER_I RPAREN SEMI
+Rule 15    statement -> PERCUTOR LPAREN LETTER_D RPAREN SEMI
+Rule 16    statement -> PERCUTOR LPAREN LETTER_B RPAREN SEMI
+Rule 17    statement -> PERCUTOR LPAREN LETTER_A RPAREN SEMI
+Rule 18    statement -> VERTICAL LPAREN LETTER_D RPAREN SEMI
+Rule 19    statement -> VERTICAL LPAREN LETTER_I RPAREN SEMI
+Rule 20    statement -> ABANICO LPAREN LETTER_A RPAREN SEMI
+Rule 21    statement -> ABANICO LPAREN LETTER_B RPAREN SEMI
+Rule 22    statement -> DEF NAME LPAREN RPAREN LBRACE statement RBRACE
+Rule 23    statement -> EN_CASO NAME Cuando
+Rule 24    statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE
+Rule 25    statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+Rule 26    statement -> IF LPAREN expr RPAREN LBRACE statement RBRACE
+Rule 27    statement -> IF LPAREN expr RPAREN LBRACE statement RBRACE Else
+Rule 28    statement -> SET NAME COMMA expr SEMI
+Rule 29    statement -> expr
+Rule 30    statement -> NAME ASSIGN expr SEMI
+Rule 31    Else -> ELSE LBRACE statement RBRACE
+Rule 32    Cuando -> CUANDO NOT_EQUAL NUMBER EnTons
+Rule 33    Cuando -> CUANDO EQUAL NUMBER EnTons
+Rule 34    Cuando -> CUANDO GE NUMBER EnTons
+Rule 35    Cuando -> CUANDO GT NUMBER EnTons
+Rule 36    Cuando -> CUANDO LE NUMBER EnTons
+Rule 37    Cuando -> CUANDO LT NUMBER EnTons
+Rule 38    EnTons -> EN_TONS LBRACE statement RBRACE Sino
+Rule 39    EnTons -> EN_TONS LBRACE statement RBRACE Cuando
+Rule 40    Sino -> SI_NO LBRACE statement RBRACE FIN_EN_CASO
+Rule 41    expr -> NAME
+Rule 42    expr -> NUMBER
+Rule 43    expr -> LPAREN expr RPAREN
+Rule 44    expr -> expr NOT_EQUAL expr
+Rule 45    expr -> expr EQUAL expr
+Rule 46    expr -> expr GE expr
+Rule 47    expr -> expr GT expr
+Rule 48    expr -> expr LE expr
+Rule 49    expr -> expr LT expr
+Rule 50    expr -> expr INT_DIVIDE expr
+Rule 51    expr -> expr MODULE expr
+Rule 52    expr -> expr DIVIDE expr
+Rule 53    expr -> expr TIMES expr
+Rule 54    expr -> expr MINUS expr
+Rule 55    expr -> expr PLUS expr
+
+Unused terminals:
+
+    COLON
+
+Terminals, with rules where they appear:
+
+ABANICO              : 20 21
+ASSIGN               : 30
+COLON                : 
+COMMA                : 8 9 28
+CUANDO               : 32 33 34 35 36 37
+DEF                  : 22
+DIVIDE               : 52
+ELSE                 : 31
+EN_CASO              : 23
+EN_TONS              : 38 39
+EQUAL                : 33 45
+FIN_EN_CASO          : 40
+FOR                  : 24 25
+GE                   : 34 46
+GOLPE                : 11
+GT                   : 35 47
+IF                   : 26 27
+INT_DIVIDE           : 50
+LBRACE               : 22 24 25 26 27 31 38 39 40
+LE                   : 36 48
+LETTER_A             : 9 13 17 20
+LETTER_B             : 13 16 21
+LETTER_D             : 8 12 15 18
+LETTER_F             : 2
+LETTER_I             : 12 14 19
+LETTER_T             : 3
+LPAREN               : 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 24 24 25 25 25 26 27 43
+LT                   : 37 49
+METRONOMO            : 8 9
+MINUS                : 54
+MODULE               : 51
+NAME                 : 1 2 3 6 22 23 28 30 41
+NEGATION             : 1
+NOT_EQUAL            : 32 44
+NUMBER               : 4 8 9 10 24 24 25 25 25 32 33 34 35 36 37 42
+PERCUTOR             : 12 13 14 15 16 17
+PERIOD               : 1 2 3
+PLUS                 : 55
+PRINT                : 4 5 6 7
+RBRACE               : 22 24 25 26 27 31 38 39 40
+RPAREN               : 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 24 24 25 25 25 26 27 43
+SEMI                 : 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 28 30
+SET                  : 28
+SI_NO                : 40
+STEP                 : 25
+STRING               : 7
+TIMES                : 53
+TO                   : 24 25
+VERTICAL             : 18 19
+VIBRATO              : 10
+error                : 
+
+Nonterminals, with rules where they appear:
+
+Cuando               : 23 39
+Else                 : 27
+EnTons               : 32 33 34 35 36 37
+Sino                 : 38
+expr                 : 5 26 27 28 29 30 43 44 44 45 45 46 46 47 47 48 48 49 49 50 50 51 51 52 52 53 53 54 54 55 55
+statement            : 22 24 25 26 27 31 38 39 40 0
+
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . NAME PERIOD NEGATION SEMI
+    (2) statement -> . NAME PERIOD LETTER_F SEMI
+    (3) statement -> . NAME PERIOD LETTER_T SEMI
+    (4) statement -> . PRINT LPAREN NUMBER RPAREN SEMI
+    (5) statement -> . PRINT LPAREN expr RPAREN SEMI
+    (6) statement -> . PRINT LPAREN NAME RPAREN SEMI
+    (7) statement -> . PRINT LPAREN STRING RPAREN SEMI
+    (8) statement -> . METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN SEMI
+    (9) statement -> . METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN SEMI
+    (10) statement -> . VIBRATO LPAREN NUMBER RPAREN SEMI
+    (11) statement -> . GOLPE LPAREN RPAREN SEMI
+    (12) statement -> . PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI
+    (13) statement -> . PERCUTOR LPAREN LETTER_A LETTER_B RPAREN SEMI
+    (14) statement -> . PERCUTOR LPAREN LETTER_I RPAREN SEMI
+    (15) statement -> . PERCUTOR LPAREN LETTER_D RPAREN SEMI
+    (16) statement -> . PERCUTOR LPAREN LETTER_B RPAREN SEMI
+    (17) statement -> . PERCUTOR LPAREN LETTER_A RPAREN SEMI
+    (18) statement -> . VERTICAL LPAREN LETTER_D RPAREN SEMI
+    (19) statement -> . VERTICAL LPAREN LETTER_I RPAREN SEMI
+    (20) statement -> . ABANICO LPAREN LETTER_A RPAREN SEMI
+    (21) statement -> . ABANICO LPAREN LETTER_B RPAREN SEMI
+    (22) statement -> . DEF NAME LPAREN RPAREN LBRACE statement RBRACE
+    (23) statement -> . EN_CASO NAME Cuando
+    (24) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (26) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE
+    (27) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE Else
+    (28) statement -> . SET NAME COMMA expr SEMI
+    (29) statement -> . expr
+    (30) statement -> . NAME ASSIGN expr SEMI
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 2
+    PRINT           shift and go to state 3
+    METRONOMO       shift and go to state 7
+    VIBRATO         shift and go to state 8
+    GOLPE           shift and go to state 9
+    PERCUTOR        shift and go to state 10
+    VERTICAL        shift and go to state 11
+    ABANICO         shift and go to state 12
+    DEF             shift and go to state 13
+    EN_CASO         shift and go to state 14
+    FOR             shift and go to state 15
+    IF              shift and go to state 16
+    SET             shift and go to state 17
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    statement                      shift and go to state 1
+    expr                           shift and go to state 6
+
+state 1
+
+    (0) S' -> statement .
+
+
+state 2
+
+    (1) statement -> NAME . PERIOD NEGATION SEMI
+    (2) statement -> NAME . PERIOD LETTER_F SEMI
+    (3) statement -> NAME . PERIOD LETTER_T SEMI
+    (30) statement -> NAME . ASSIGN expr SEMI
+    (41) expr -> NAME .
+    PERIOD          shift and go to state 18
+    ASSIGN          shift and go to state 19
+    NOT_EQUAL       reduce using rule 41 (expr -> NAME .)
+    EQUAL           reduce using rule 41 (expr -> NAME .)
+    GE              reduce using rule 41 (expr -> NAME .)
+    GT              reduce using rule 41 (expr -> NAME .)
+    LE              reduce using rule 41 (expr -> NAME .)
+    LT              reduce using rule 41 (expr -> NAME .)
+    INT_DIVIDE      reduce using rule 41 (expr -> NAME .)
+    MODULE          reduce using rule 41 (expr -> NAME .)
+    DIVIDE          reduce using rule 41 (expr -> NAME .)
+    TIMES           reduce using rule 41 (expr -> NAME .)
+    MINUS           reduce using rule 41 (expr -> NAME .)
+    PLUS            reduce using rule 41 (expr -> NAME .)
+    $end            reduce using rule 41 (expr -> NAME .)
+    RBRACE          reduce using rule 41 (expr -> NAME .)
+
+
+state 3
+
+    (4) statement -> PRINT . LPAREN NUMBER RPAREN SEMI
+    (5) statement -> PRINT . LPAREN expr RPAREN SEMI
+    (6) statement -> PRINT . LPAREN NAME RPAREN SEMI
+    (7) statement -> PRINT . LPAREN STRING RPAREN SEMI
+    LPAREN          shift and go to state 20
+
+
+state 4
+
+    (43) expr -> LPAREN . expr RPAREN
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 21
+
+state 5
+
+    (42) expr -> NUMBER .
+    NOT_EQUAL       reduce using rule 42 (expr -> NUMBER .)
+    EQUAL           reduce using rule 42 (expr -> NUMBER .)
+    GE              reduce using rule 42 (expr -> NUMBER .)
+    GT              reduce using rule 42 (expr -> NUMBER .)
+    LE              reduce using rule 42 (expr -> NUMBER .)
+    LT              reduce using rule 42 (expr -> NUMBER .)
+    INT_DIVIDE      reduce using rule 42 (expr -> NUMBER .)
+    MODULE          reduce using rule 42 (expr -> NUMBER .)
+    DIVIDE          reduce using rule 42 (expr -> NUMBER .)
+    TIMES           reduce using rule 42 (expr -> NUMBER .)
+    MINUS           reduce using rule 42 (expr -> NUMBER .)
+    PLUS            reduce using rule 42 (expr -> NUMBER .)
+    $end            reduce using rule 42 (expr -> NUMBER .)
+    RPAREN          reduce using rule 42 (expr -> NUMBER .)
+    SEMI            reduce using rule 42 (expr -> NUMBER .)
+    RBRACE          reduce using rule 42 (expr -> NUMBER .)
+
+
+state 6
+
+    (29) statement -> expr .
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+    $end            reduce using rule 29 (statement -> expr .)
+    RBRACE          reduce using rule 29 (statement -> expr .)
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 7
+
+    (8) statement -> METRONOMO . LPAREN LETTER_D COMMA NUMBER RPAREN SEMI
+    (9) statement -> METRONOMO . LPAREN LETTER_A COMMA NUMBER RPAREN SEMI
+    LPAREN          shift and go to state 35
+
+
+state 8
+
+    (10) statement -> VIBRATO . LPAREN NUMBER RPAREN SEMI
+    LPAREN          shift and go to state 36
+
+
+state 9
+
+    (11) statement -> GOLPE . LPAREN RPAREN SEMI
+    LPAREN          shift and go to state 37
+
+
+state 10
+
+    (12) statement -> PERCUTOR . LPAREN LETTER_D LETTER_I RPAREN SEMI
+    (13) statement -> PERCUTOR . LPAREN LETTER_A LETTER_B RPAREN SEMI
+    (14) statement -> PERCUTOR . LPAREN LETTER_I RPAREN SEMI
+    (15) statement -> PERCUTOR . LPAREN LETTER_D RPAREN SEMI
+    (16) statement -> PERCUTOR . LPAREN LETTER_B RPAREN SEMI
+    (17) statement -> PERCUTOR . LPAREN LETTER_A RPAREN SEMI
+    LPAREN          shift and go to state 38
+
+
+state 11
+
+    (18) statement -> VERTICAL . LPAREN LETTER_D RPAREN SEMI
+    (19) statement -> VERTICAL . LPAREN LETTER_I RPAREN SEMI
+    LPAREN          shift and go to state 39
+
+
+state 12
+
+    (20) statement -> ABANICO . LPAREN LETTER_A RPAREN SEMI
+    (21) statement -> ABANICO . LPAREN LETTER_B RPAREN SEMI
+    LPAREN          shift and go to state 40
+
+
+state 13
+
+    (22) statement -> DEF . NAME LPAREN RPAREN LBRACE statement RBRACE
+    NAME            shift and go to state 41
+
+
+state 14
+
+    (23) statement -> EN_CASO . NAME Cuando
+    NAME            shift and go to state 42
+
+
+state 15
+
+    (24) statement -> FOR . LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> FOR . LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    LPAREN          shift and go to state 43
+
+
+state 16
+
+    (26) statement -> IF . LPAREN expr RPAREN LBRACE statement RBRACE
+    (27) statement -> IF . LPAREN expr RPAREN LBRACE statement RBRACE Else
+    LPAREN          shift and go to state 44
+
+
+state 17
+
+    (28) statement -> SET . NAME COMMA expr SEMI
+    NAME            shift and go to state 45
+
+
+state 18
+
+    (1) statement -> NAME PERIOD . NEGATION SEMI
+    (2) statement -> NAME PERIOD . LETTER_F SEMI
+    (3) statement -> NAME PERIOD . LETTER_T SEMI
+    NEGATION        shift and go to state 46
+    LETTER_F        shift and go to state 47
+    LETTER_T        shift and go to state 48
+
+
+state 19
+
+    (30) statement -> NAME ASSIGN . expr SEMI
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 49
+
+state 20
+
+    (4) statement -> PRINT LPAREN . NUMBER RPAREN SEMI
+    (5) statement -> PRINT LPAREN . expr RPAREN SEMI
+    (6) statement -> PRINT LPAREN . NAME RPAREN SEMI
+    (7) statement -> PRINT LPAREN . STRING RPAREN SEMI
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NUMBER          shift and go to state 50
+    NAME            shift and go to state 52
+    STRING          shift and go to state 53
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 51
+
+state 21
+
+    (43) expr -> LPAREN expr . RPAREN
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+    RPAREN          shift and go to state 54
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 22
+
+    (41) expr -> NAME .
+    RPAREN          reduce using rule 41 (expr -> NAME .)
+    NOT_EQUAL       reduce using rule 41 (expr -> NAME .)
+    EQUAL           reduce using rule 41 (expr -> NAME .)
+    GE              reduce using rule 41 (expr -> NAME .)
+    GT              reduce using rule 41 (expr -> NAME .)
+    LE              reduce using rule 41 (expr -> NAME .)
+    LT              reduce using rule 41 (expr -> NAME .)
+    INT_DIVIDE      reduce using rule 41 (expr -> NAME .)
+    MODULE          reduce using rule 41 (expr -> NAME .)
+    DIVIDE          reduce using rule 41 (expr -> NAME .)
+    TIMES           reduce using rule 41 (expr -> NAME .)
+    MINUS           reduce using rule 41 (expr -> NAME .)
+    PLUS            reduce using rule 41 (expr -> NAME .)
+    SEMI            reduce using rule 41 (expr -> NAME .)
+    $end            reduce using rule 41 (expr -> NAME .)
+    RBRACE          reduce using rule 41 (expr -> NAME .)
+
+
+state 23
+
+    (44) expr -> expr NOT_EQUAL . expr
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 55
+
+state 24
+
+    (45) expr -> expr EQUAL . expr
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 56
+
+state 25
+
+    (46) expr -> expr GE . expr
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 57
+
+state 26
+
+    (47) expr -> expr GT . expr
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 58
+
+state 27
+
+    (48) expr -> expr LE . expr
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 59
+
+state 28
+
+    (49) expr -> expr LT . expr
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 60
+
+state 29
+
+    (50) expr -> expr INT_DIVIDE . expr
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 61
+
+state 30
+
+    (51) expr -> expr MODULE . expr
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 62
+
+state 31
+
+    (52) expr -> expr DIVIDE . expr
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 63
+
+state 32
+
+    (53) expr -> expr TIMES . expr
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 64
+
+state 33
+
+    (54) expr -> expr MINUS . expr
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 65
+
+state 34
+
+    (55) expr -> expr PLUS . expr
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 66
+
+state 35
+
+    (8) statement -> METRONOMO LPAREN . LETTER_D COMMA NUMBER RPAREN SEMI
+    (9) statement -> METRONOMO LPAREN . LETTER_A COMMA NUMBER RPAREN SEMI
+    LETTER_D        shift and go to state 67
+    LETTER_A        shift and go to state 68
+
+
+state 36
+
+    (10) statement -> VIBRATO LPAREN . NUMBER RPAREN SEMI
+    NUMBER          shift and go to state 69
+
+
+state 37
+
+    (11) statement -> GOLPE LPAREN . RPAREN SEMI
+    RPAREN          shift and go to state 70
+
+
+state 38
+
+    (12) statement -> PERCUTOR LPAREN . LETTER_D LETTER_I RPAREN SEMI
+    (13) statement -> PERCUTOR LPAREN . LETTER_A LETTER_B RPAREN SEMI
+    (14) statement -> PERCUTOR LPAREN . LETTER_I RPAREN SEMI
+    (15) statement -> PERCUTOR LPAREN . LETTER_D RPAREN SEMI
+    (16) statement -> PERCUTOR LPAREN . LETTER_B RPAREN SEMI
+    (17) statement -> PERCUTOR LPAREN . LETTER_A RPAREN SEMI
+    LETTER_D        shift and go to state 71
+    LETTER_A        shift and go to state 73
+    LETTER_I        shift and go to state 72
+    LETTER_B        shift and go to state 74
+
+
+state 39
+
+    (18) statement -> VERTICAL LPAREN . LETTER_D RPAREN SEMI
+    (19) statement -> VERTICAL LPAREN . LETTER_I RPAREN SEMI
+    LETTER_D        shift and go to state 75
+    LETTER_I        shift and go to state 76
+
+
+state 40
+
+    (20) statement -> ABANICO LPAREN . LETTER_A RPAREN SEMI
+    (21) statement -> ABANICO LPAREN . LETTER_B RPAREN SEMI
+    LETTER_A        shift and go to state 77
+    LETTER_B        shift and go to state 78
+
+
+state 41
+
+    (22) statement -> DEF NAME . LPAREN RPAREN LBRACE statement RBRACE
+    LPAREN          shift and go to state 79
+
+
+state 42
+
+    (23) statement -> EN_CASO NAME . Cuando
+    (32) Cuando -> . CUANDO NOT_EQUAL NUMBER EnTons
+    (33) Cuando -> . CUANDO EQUAL NUMBER EnTons
+    (34) Cuando -> . CUANDO GE NUMBER EnTons
+    (35) Cuando -> . CUANDO GT NUMBER EnTons
+    (36) Cuando -> . CUANDO LE NUMBER EnTons
+    (37) Cuando -> . CUANDO LT NUMBER EnTons
+    CUANDO          shift and go to state 81
+
+    Cuando                         shift and go to state 80
+
+state 43
+
+    (24) statement -> FOR LPAREN . NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> FOR LPAREN . NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    NUMBER          shift and go to state 82
+
+
+state 44
+
+    (26) statement -> IF LPAREN . expr RPAREN LBRACE statement RBRACE
+    (27) statement -> IF LPAREN . expr RPAREN LBRACE statement RBRACE Else
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 83
+
+state 45
+
+    (28) statement -> SET NAME . COMMA expr SEMI
+    COMMA           shift and go to state 84
+
+
+state 46
+
+    (1) statement -> NAME PERIOD NEGATION . SEMI
+    SEMI            shift and go to state 85
+
+
+state 47
+
+    (2) statement -> NAME PERIOD LETTER_F . SEMI
+    SEMI            shift and go to state 86
+
+
+state 48
+
+    (3) statement -> NAME PERIOD LETTER_T . SEMI
+    SEMI            shift and go to state 87
+
+
+state 49
+
+    (30) statement -> NAME ASSIGN expr . SEMI
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+    SEMI            shift and go to state 88
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 50
+
+    (4) statement -> PRINT LPAREN NUMBER . RPAREN SEMI
+    (42) expr -> NUMBER .
+  ! shift/reduce conflict for RPAREN resolved as shift
+    RPAREN          shift and go to state 89
+    NOT_EQUAL       reduce using rule 42 (expr -> NUMBER .)
+    EQUAL           reduce using rule 42 (expr -> NUMBER .)
+    GE              reduce using rule 42 (expr -> NUMBER .)
+    GT              reduce using rule 42 (expr -> NUMBER .)
+    LE              reduce using rule 42 (expr -> NUMBER .)
+    LT              reduce using rule 42 (expr -> NUMBER .)
+    INT_DIVIDE      reduce using rule 42 (expr -> NUMBER .)
+    MODULE          reduce using rule 42 (expr -> NUMBER .)
+    DIVIDE          reduce using rule 42 (expr -> NUMBER .)
+    TIMES           reduce using rule 42 (expr -> NUMBER .)
+    MINUS           reduce using rule 42 (expr -> NUMBER .)
+    PLUS            reduce using rule 42 (expr -> NUMBER .)
+
+
+state 51
+
+    (5) statement -> PRINT LPAREN expr . RPAREN SEMI
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+    RPAREN          shift and go to state 90
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 52
+
+    (6) statement -> PRINT LPAREN NAME . RPAREN SEMI
+    (41) expr -> NAME .
+  ! shift/reduce conflict for RPAREN resolved as shift
+    RPAREN          shift and go to state 91
+    NOT_EQUAL       reduce using rule 41 (expr -> NAME .)
+    EQUAL           reduce using rule 41 (expr -> NAME .)
+    GE              reduce using rule 41 (expr -> NAME .)
+    GT              reduce using rule 41 (expr -> NAME .)
+    LE              reduce using rule 41 (expr -> NAME .)
+    LT              reduce using rule 41 (expr -> NAME .)
+    INT_DIVIDE      reduce using rule 41 (expr -> NAME .)
+    MODULE          reduce using rule 41 (expr -> NAME .)
+    DIVIDE          reduce using rule 41 (expr -> NAME .)
+    TIMES           reduce using rule 41 (expr -> NAME .)
+    MINUS           reduce using rule 41 (expr -> NAME .)
+    PLUS            reduce using rule 41 (expr -> NAME .)
+
+
+state 53
+
+    (7) statement -> PRINT LPAREN STRING . RPAREN SEMI
+    RPAREN          shift and go to state 92
+
+
+state 54
+
+    (43) expr -> LPAREN expr RPAREN .
+    NOT_EQUAL       reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    EQUAL           reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    GE              reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    GT              reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    LE              reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    LT              reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    INT_DIVIDE      reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    MODULE          reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    DIVIDE          reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    TIMES           reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    MINUS           reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    PLUS            reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    $end            reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    RPAREN          reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    SEMI            reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+    RBRACE          reduce using rule 43 (expr -> LPAREN expr RPAREN .)
+
+
+state 55
+
+    (44) expr -> expr NOT_EQUAL expr .
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for INT_DIVIDE resolved as shift
+  ! shift/reduce conflict for MODULE resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 44 (expr -> expr NOT_EQUAL expr .)
+    RPAREN          reduce using rule 44 (expr -> expr NOT_EQUAL expr .)
+    SEMI            reduce using rule 44 (expr -> expr NOT_EQUAL expr .)
+    RBRACE          reduce using rule 44 (expr -> expr NOT_EQUAL expr .)
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 56
+
+    (45) expr -> expr EQUAL expr .
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for INT_DIVIDE resolved as shift
+  ! shift/reduce conflict for MODULE resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 45 (expr -> expr EQUAL expr .)
+    RPAREN          reduce using rule 45 (expr -> expr EQUAL expr .)
+    SEMI            reduce using rule 45 (expr -> expr EQUAL expr .)
+    RBRACE          reduce using rule 45 (expr -> expr EQUAL expr .)
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 57
+
+    (46) expr -> expr GE expr .
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for INT_DIVIDE resolved as shift
+  ! shift/reduce conflict for MODULE resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 46 (expr -> expr GE expr .)
+    RPAREN          reduce using rule 46 (expr -> expr GE expr .)
+    SEMI            reduce using rule 46 (expr -> expr GE expr .)
+    RBRACE          reduce using rule 46 (expr -> expr GE expr .)
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 58
+
+    (47) expr -> expr GT expr .
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for INT_DIVIDE resolved as shift
+  ! shift/reduce conflict for MODULE resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 47 (expr -> expr GT expr .)
+    RPAREN          reduce using rule 47 (expr -> expr GT expr .)
+    SEMI            reduce using rule 47 (expr -> expr GT expr .)
+    RBRACE          reduce using rule 47 (expr -> expr GT expr .)
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 59
+
+    (48) expr -> expr LE expr .
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for INT_DIVIDE resolved as shift
+  ! shift/reduce conflict for MODULE resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 48 (expr -> expr LE expr .)
+    RPAREN          reduce using rule 48 (expr -> expr LE expr .)
+    SEMI            reduce using rule 48 (expr -> expr LE expr .)
+    RBRACE          reduce using rule 48 (expr -> expr LE expr .)
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 60
+
+    (49) expr -> expr LT expr .
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for INT_DIVIDE resolved as shift
+  ! shift/reduce conflict for MODULE resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 49 (expr -> expr LT expr .)
+    RPAREN          reduce using rule 49 (expr -> expr LT expr .)
+    SEMI            reduce using rule 49 (expr -> expr LT expr .)
+    RBRACE          reduce using rule 49 (expr -> expr LT expr .)
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 61
+
+    (50) expr -> expr INT_DIVIDE expr .
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for INT_DIVIDE resolved as shift
+  ! shift/reduce conflict for MODULE resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 50 (expr -> expr INT_DIVIDE expr .)
+    RPAREN          reduce using rule 50 (expr -> expr INT_DIVIDE expr .)
+    SEMI            reduce using rule 50 (expr -> expr INT_DIVIDE expr .)
+    RBRACE          reduce using rule 50 (expr -> expr INT_DIVIDE expr .)
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 62
+
+    (51) expr -> expr MODULE expr .
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for INT_DIVIDE resolved as shift
+  ! shift/reduce conflict for MODULE resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 51 (expr -> expr MODULE expr .)
+    RPAREN          reduce using rule 51 (expr -> expr MODULE expr .)
+    SEMI            reduce using rule 51 (expr -> expr MODULE expr .)
+    RBRACE          reduce using rule 51 (expr -> expr MODULE expr .)
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 63
+
+    (52) expr -> expr DIVIDE expr .
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for INT_DIVIDE resolved as shift
+  ! shift/reduce conflict for MODULE resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 52 (expr -> expr DIVIDE expr .)
+    RPAREN          reduce using rule 52 (expr -> expr DIVIDE expr .)
+    SEMI            reduce using rule 52 (expr -> expr DIVIDE expr .)
+    RBRACE          reduce using rule 52 (expr -> expr DIVIDE expr .)
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 64
+
+    (53) expr -> expr TIMES expr .
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for INT_DIVIDE resolved as shift
+  ! shift/reduce conflict for MODULE resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 53 (expr -> expr TIMES expr .)
+    RPAREN          reduce using rule 53 (expr -> expr TIMES expr .)
+    SEMI            reduce using rule 53 (expr -> expr TIMES expr .)
+    RBRACE          reduce using rule 53 (expr -> expr TIMES expr .)
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 65
+
+    (54) expr -> expr MINUS expr .
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for INT_DIVIDE resolved as shift
+  ! shift/reduce conflict for MODULE resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 54 (expr -> expr MINUS expr .)
+    RPAREN          reduce using rule 54 (expr -> expr MINUS expr .)
+    SEMI            reduce using rule 54 (expr -> expr MINUS expr .)
+    RBRACE          reduce using rule 54 (expr -> expr MINUS expr .)
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 66
+
+    (55) expr -> expr PLUS expr .
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for INT_DIVIDE resolved as shift
+  ! shift/reduce conflict for MODULE resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+    $end            reduce using rule 55 (expr -> expr PLUS expr .)
+    RPAREN          reduce using rule 55 (expr -> expr PLUS expr .)
+    SEMI            reduce using rule 55 (expr -> expr PLUS expr .)
+    RBRACE          reduce using rule 55 (expr -> expr PLUS expr .)
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 67
+
+    (8) statement -> METRONOMO LPAREN LETTER_D . COMMA NUMBER RPAREN SEMI
+    COMMA           shift and go to state 93
+
+
+state 68
+
+    (9) statement -> METRONOMO LPAREN LETTER_A . COMMA NUMBER RPAREN SEMI
+    COMMA           shift and go to state 94
+
+
+state 69
+
+    (10) statement -> VIBRATO LPAREN NUMBER . RPAREN SEMI
+    RPAREN          shift and go to state 95
+
+
+state 70
+
+    (11) statement -> GOLPE LPAREN RPAREN . SEMI
+    SEMI            shift and go to state 96
+
+
+state 71
+
+    (12) statement -> PERCUTOR LPAREN LETTER_D . LETTER_I RPAREN SEMI
+    (15) statement -> PERCUTOR LPAREN LETTER_D . RPAREN SEMI
+    LETTER_I        shift and go to state 97
+    RPAREN          shift and go to state 98
+
+
+state 72
+
+    (14) statement -> PERCUTOR LPAREN LETTER_I . RPAREN SEMI
+    RPAREN          shift and go to state 99
+
+
+state 73
+
+    (13) statement -> PERCUTOR LPAREN LETTER_A . LETTER_B RPAREN SEMI
+    (17) statement -> PERCUTOR LPAREN LETTER_A . RPAREN SEMI
+    LETTER_B        shift and go to state 100
+    RPAREN          shift and go to state 101
+
+
+state 74
+
+    (16) statement -> PERCUTOR LPAREN LETTER_B . RPAREN SEMI
+    RPAREN          shift and go to state 102
+
+
+state 75
+
+    (18) statement -> VERTICAL LPAREN LETTER_D . RPAREN SEMI
+    RPAREN          shift and go to state 103
+
+
+state 76
+
+    (19) statement -> VERTICAL LPAREN LETTER_I . RPAREN SEMI
+    RPAREN          shift and go to state 104
+
+
+state 77
+
+    (20) statement -> ABANICO LPAREN LETTER_A . RPAREN SEMI
+    RPAREN          shift and go to state 105
+
+
+state 78
+
+    (21) statement -> ABANICO LPAREN LETTER_B . RPAREN SEMI
+    RPAREN          shift and go to state 106
+
+
+state 79
+
+    (22) statement -> DEF NAME LPAREN . RPAREN LBRACE statement RBRACE
+    RPAREN          shift and go to state 107
+
+
+state 80
+
+    (23) statement -> EN_CASO NAME Cuando .
+    $end            reduce using rule 23 (statement -> EN_CASO NAME Cuando .)
+    RBRACE          reduce using rule 23 (statement -> EN_CASO NAME Cuando .)
+
+
+state 81
+
+    (32) Cuando -> CUANDO . NOT_EQUAL NUMBER EnTons
+    (33) Cuando -> CUANDO . EQUAL NUMBER EnTons
+    (34) Cuando -> CUANDO . GE NUMBER EnTons
+    (35) Cuando -> CUANDO . GT NUMBER EnTons
+    (36) Cuando -> CUANDO . LE NUMBER EnTons
+    (37) Cuando -> CUANDO . LT NUMBER EnTons
+    NOT_EQUAL       shift and go to state 108
+    EQUAL           shift and go to state 109
+    GE              shift and go to state 110
+    GT              shift and go to state 111
+    LE              shift and go to state 112
+    LT              shift and go to state 113
+
+
+state 82
+
+    (24) statement -> FOR LPAREN NUMBER . RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> FOR LPAREN NUMBER . RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    RPAREN          shift and go to state 114
+
+
+state 83
+
+    (26) statement -> IF LPAREN expr . RPAREN LBRACE statement RBRACE
+    (27) statement -> IF LPAREN expr . RPAREN LBRACE statement RBRACE Else
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+    RPAREN          shift and go to state 115
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 84
+
+    (28) statement -> SET NAME COMMA . expr SEMI
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 22
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 116
+
+state 85
+
+    (1) statement -> NAME PERIOD NEGATION SEMI .
+    $end            reduce using rule 1 (statement -> NAME PERIOD NEGATION SEMI .)
+    RBRACE          reduce using rule 1 (statement -> NAME PERIOD NEGATION SEMI .)
+
+
+state 86
+
+    (2) statement -> NAME PERIOD LETTER_F SEMI .
+    $end            reduce using rule 2 (statement -> NAME PERIOD LETTER_F SEMI .)
+    RBRACE          reduce using rule 2 (statement -> NAME PERIOD LETTER_F SEMI .)
+
+
+state 87
+
+    (3) statement -> NAME PERIOD LETTER_T SEMI .
+    $end            reduce using rule 3 (statement -> NAME PERIOD LETTER_T SEMI .)
+    RBRACE          reduce using rule 3 (statement -> NAME PERIOD LETTER_T SEMI .)
+
+
+state 88
+
+    (30) statement -> NAME ASSIGN expr SEMI .
+    $end            reduce using rule 30 (statement -> NAME ASSIGN expr SEMI .)
+    RBRACE          reduce using rule 30 (statement -> NAME ASSIGN expr SEMI .)
+
+
+state 89
+
+    (4) statement -> PRINT LPAREN NUMBER RPAREN . SEMI
+    SEMI            shift and go to state 117
+
+
+state 90
+
+    (5) statement -> PRINT LPAREN expr RPAREN . SEMI
+    SEMI            shift and go to state 118
+
+
+state 91
+
+    (6) statement -> PRINT LPAREN NAME RPAREN . SEMI
+    SEMI            shift and go to state 119
+
+
+state 92
+
+    (7) statement -> PRINT LPAREN STRING RPAREN . SEMI
+    SEMI            shift and go to state 120
+
+
+state 93
+
+    (8) statement -> METRONOMO LPAREN LETTER_D COMMA . NUMBER RPAREN SEMI
+    NUMBER          shift and go to state 121
+
+
+state 94
+
+    (9) statement -> METRONOMO LPAREN LETTER_A COMMA . NUMBER RPAREN SEMI
+    NUMBER          shift and go to state 122
+
+
+state 95
+
+    (10) statement -> VIBRATO LPAREN NUMBER RPAREN . SEMI
+    SEMI            shift and go to state 123
+
+
+state 96
+
+    (11) statement -> GOLPE LPAREN RPAREN SEMI .
+    $end            reduce using rule 11 (statement -> GOLPE LPAREN RPAREN SEMI .)
+    RBRACE          reduce using rule 11 (statement -> GOLPE LPAREN RPAREN SEMI .)
+
+
+state 97
+
+    (12) statement -> PERCUTOR LPAREN LETTER_D LETTER_I . RPAREN SEMI
+    RPAREN          shift and go to state 124
+
+
+state 98
+
+    (15) statement -> PERCUTOR LPAREN LETTER_D RPAREN . SEMI
+    SEMI            shift and go to state 125
+
+
+state 99
+
+    (14) statement -> PERCUTOR LPAREN LETTER_I RPAREN . SEMI
+    SEMI            shift and go to state 126
+
+
+state 100
+
+    (13) statement -> PERCUTOR LPAREN LETTER_A LETTER_B . RPAREN SEMI
+    RPAREN          shift and go to state 127
+
+
+state 101
+
+    (17) statement -> PERCUTOR LPAREN LETTER_A RPAREN . SEMI
+    SEMI            shift and go to state 128
+
+
+state 102
+
+    (16) statement -> PERCUTOR LPAREN LETTER_B RPAREN . SEMI
+    SEMI            shift and go to state 129
+
+
+state 103
+
+    (18) statement -> VERTICAL LPAREN LETTER_D RPAREN . SEMI
+    SEMI            shift and go to state 130
+
+
+state 104
+
+    (19) statement -> VERTICAL LPAREN LETTER_I RPAREN . SEMI
+    SEMI            shift and go to state 131
+
+
+state 105
+
+    (20) statement -> ABANICO LPAREN LETTER_A RPAREN . SEMI
+    SEMI            shift and go to state 132
+
+
+state 106
+
+    (21) statement -> ABANICO LPAREN LETTER_B RPAREN . SEMI
+    SEMI            shift and go to state 133
+
+
+state 107
+
+    (22) statement -> DEF NAME LPAREN RPAREN . LBRACE statement RBRACE
+    LBRACE          shift and go to state 134
+
+
+state 108
+
+    (32) Cuando -> CUANDO NOT_EQUAL . NUMBER EnTons
+    NUMBER          shift and go to state 135
+
+
+state 109
+
+    (33) Cuando -> CUANDO EQUAL . NUMBER EnTons
+    NUMBER          shift and go to state 136
+
+
+state 110
+
+    (34) Cuando -> CUANDO GE . NUMBER EnTons
+    NUMBER          shift and go to state 137
+
+
+state 111
+
+    (35) Cuando -> CUANDO GT . NUMBER EnTons
+    NUMBER          shift and go to state 138
+
+
+state 112
+
+    (36) Cuando -> CUANDO LE . NUMBER EnTons
+    NUMBER          shift and go to state 139
+
+
+state 113
+
+    (37) Cuando -> CUANDO LT . NUMBER EnTons
+    NUMBER          shift and go to state 140
+
+
+state 114
+
+    (24) statement -> FOR LPAREN NUMBER RPAREN . TO LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> FOR LPAREN NUMBER RPAREN . TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    TO              shift and go to state 141
+
+
+state 115
+
+    (26) statement -> IF LPAREN expr RPAREN . LBRACE statement RBRACE
+    (27) statement -> IF LPAREN expr RPAREN . LBRACE statement RBRACE Else
+    LBRACE          shift and go to state 142
+
+
+state 116
+
+    (28) statement -> SET NAME COMMA expr . SEMI
+    (44) expr -> expr . NOT_EQUAL expr
+    (45) expr -> expr . EQUAL expr
+    (46) expr -> expr . GE expr
+    (47) expr -> expr . GT expr
+    (48) expr -> expr . LE expr
+    (49) expr -> expr . LT expr
+    (50) expr -> expr . INT_DIVIDE expr
+    (51) expr -> expr . MODULE expr
+    (52) expr -> expr . DIVIDE expr
+    (53) expr -> expr . TIMES expr
+    (54) expr -> expr . MINUS expr
+    (55) expr -> expr . PLUS expr
+    SEMI            shift and go to state 143
+    NOT_EQUAL       shift and go to state 23
+    EQUAL           shift and go to state 24
+    GE              shift and go to state 25
+    GT              shift and go to state 26
+    LE              shift and go to state 27
+    LT              shift and go to state 28
+    INT_DIVIDE      shift and go to state 29
+    MODULE          shift and go to state 30
+    DIVIDE          shift and go to state 31
+    TIMES           shift and go to state 32
+    MINUS           shift and go to state 33
+    PLUS            shift and go to state 34
+
+
+state 117
+
+    (4) statement -> PRINT LPAREN NUMBER RPAREN SEMI .
+    $end            reduce using rule 4 (statement -> PRINT LPAREN NUMBER RPAREN SEMI .)
+    RBRACE          reduce using rule 4 (statement -> PRINT LPAREN NUMBER RPAREN SEMI .)
+
+
+state 118
+
+    (5) statement -> PRINT LPAREN expr RPAREN SEMI .
+    $end            reduce using rule 5 (statement -> PRINT LPAREN expr RPAREN SEMI .)
+    RBRACE          reduce using rule 5 (statement -> PRINT LPAREN expr RPAREN SEMI .)
+
+
+state 119
+
+    (6) statement -> PRINT LPAREN NAME RPAREN SEMI .
+    $end            reduce using rule 6 (statement -> PRINT LPAREN NAME RPAREN SEMI .)
+    RBRACE          reduce using rule 6 (statement -> PRINT LPAREN NAME RPAREN SEMI .)
+
+
+state 120
+
+    (7) statement -> PRINT LPAREN STRING RPAREN SEMI .
+    $end            reduce using rule 7 (statement -> PRINT LPAREN STRING RPAREN SEMI .)
+    RBRACE          reduce using rule 7 (statement -> PRINT LPAREN STRING RPAREN SEMI .)
+
+
+state 121
+
+    (8) statement -> METRONOMO LPAREN LETTER_D COMMA NUMBER . RPAREN SEMI
+    RPAREN          shift and go to state 144
+
+
+state 122
+
+    (9) statement -> METRONOMO LPAREN LETTER_A COMMA NUMBER . RPAREN SEMI
+    RPAREN          shift and go to state 145
+
+
+state 123
+
+    (10) statement -> VIBRATO LPAREN NUMBER RPAREN SEMI .
+    $end            reduce using rule 10 (statement -> VIBRATO LPAREN NUMBER RPAREN SEMI .)
+    RBRACE          reduce using rule 10 (statement -> VIBRATO LPAREN NUMBER RPAREN SEMI .)
+
+
+state 124
+
+    (12) statement -> PERCUTOR LPAREN LETTER_D LETTER_I RPAREN . SEMI
+    SEMI            shift and go to state 146
+
+
+state 125
+
+    (15) statement -> PERCUTOR LPAREN LETTER_D RPAREN SEMI .
+    $end            reduce using rule 15 (statement -> PERCUTOR LPAREN LETTER_D RPAREN SEMI .)
+    RBRACE          reduce using rule 15 (statement -> PERCUTOR LPAREN LETTER_D RPAREN SEMI .)
+
+
+state 126
+
+    (14) statement -> PERCUTOR LPAREN LETTER_I RPAREN SEMI .
+    $end            reduce using rule 14 (statement -> PERCUTOR LPAREN LETTER_I RPAREN SEMI .)
+    RBRACE          reduce using rule 14 (statement -> PERCUTOR LPAREN LETTER_I RPAREN SEMI .)
+
+
+state 127
+
+    (13) statement -> PERCUTOR LPAREN LETTER_A LETTER_B RPAREN . SEMI
+    SEMI            shift and go to state 147
+
+
+state 128
+
+    (17) statement -> PERCUTOR LPAREN LETTER_A RPAREN SEMI .
+    $end            reduce using rule 17 (statement -> PERCUTOR LPAREN LETTER_A RPAREN SEMI .)
+    RBRACE          reduce using rule 17 (statement -> PERCUTOR LPAREN LETTER_A RPAREN SEMI .)
+
+
+state 129
+
+    (16) statement -> PERCUTOR LPAREN LETTER_B RPAREN SEMI .
+    $end            reduce using rule 16 (statement -> PERCUTOR LPAREN LETTER_B RPAREN SEMI .)
+    RBRACE          reduce using rule 16 (statement -> PERCUTOR LPAREN LETTER_B RPAREN SEMI .)
+
+
+state 130
+
+    (18) statement -> VERTICAL LPAREN LETTER_D RPAREN SEMI .
+    $end            reduce using rule 18 (statement -> VERTICAL LPAREN LETTER_D RPAREN SEMI .)
+    RBRACE          reduce using rule 18 (statement -> VERTICAL LPAREN LETTER_D RPAREN SEMI .)
+
+
+state 131
+
+    (19) statement -> VERTICAL LPAREN LETTER_I RPAREN SEMI .
+    $end            reduce using rule 19 (statement -> VERTICAL LPAREN LETTER_I RPAREN SEMI .)
+    RBRACE          reduce using rule 19 (statement -> VERTICAL LPAREN LETTER_I RPAREN SEMI .)
+
+
+state 132
+
+    (20) statement -> ABANICO LPAREN LETTER_A RPAREN SEMI .
+    $end            reduce using rule 20 (statement -> ABANICO LPAREN LETTER_A RPAREN SEMI .)
+    RBRACE          reduce using rule 20 (statement -> ABANICO LPAREN LETTER_A RPAREN SEMI .)
+
+
+state 133
+
+    (21) statement -> ABANICO LPAREN LETTER_B RPAREN SEMI .
+    $end            reduce using rule 21 (statement -> ABANICO LPAREN LETTER_B RPAREN SEMI .)
+    RBRACE          reduce using rule 21 (statement -> ABANICO LPAREN LETTER_B RPAREN SEMI .)
+
+
+state 134
+
+    (22) statement -> DEF NAME LPAREN RPAREN LBRACE . statement RBRACE
+    (1) statement -> . NAME PERIOD NEGATION SEMI
+    (2) statement -> . NAME PERIOD LETTER_F SEMI
+    (3) statement -> . NAME PERIOD LETTER_T SEMI
+    (4) statement -> . PRINT LPAREN NUMBER RPAREN SEMI
+    (5) statement -> . PRINT LPAREN expr RPAREN SEMI
+    (6) statement -> . PRINT LPAREN NAME RPAREN SEMI
+    (7) statement -> . PRINT LPAREN STRING RPAREN SEMI
+    (8) statement -> . METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN SEMI
+    (9) statement -> . METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN SEMI
+    (10) statement -> . VIBRATO LPAREN NUMBER RPAREN SEMI
+    (11) statement -> . GOLPE LPAREN RPAREN SEMI
+    (12) statement -> . PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI
+    (13) statement -> . PERCUTOR LPAREN LETTER_A LETTER_B RPAREN SEMI
+    (14) statement -> . PERCUTOR LPAREN LETTER_I RPAREN SEMI
+    (15) statement -> . PERCUTOR LPAREN LETTER_D RPAREN SEMI
+    (16) statement -> . PERCUTOR LPAREN LETTER_B RPAREN SEMI
+    (17) statement -> . PERCUTOR LPAREN LETTER_A RPAREN SEMI
+    (18) statement -> . VERTICAL LPAREN LETTER_D RPAREN SEMI
+    (19) statement -> . VERTICAL LPAREN LETTER_I RPAREN SEMI
+    (20) statement -> . ABANICO LPAREN LETTER_A RPAREN SEMI
+    (21) statement -> . ABANICO LPAREN LETTER_B RPAREN SEMI
+    (22) statement -> . DEF NAME LPAREN RPAREN LBRACE statement RBRACE
+    (23) statement -> . EN_CASO NAME Cuando
+    (24) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (26) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE
+    (27) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE Else
+    (28) statement -> . SET NAME COMMA expr SEMI
+    (29) statement -> . expr
+    (30) statement -> . NAME ASSIGN expr SEMI
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 2
+    PRINT           shift and go to state 3
+    METRONOMO       shift and go to state 7
+    VIBRATO         shift and go to state 8
+    GOLPE           shift and go to state 9
+    PERCUTOR        shift and go to state 10
+    VERTICAL        shift and go to state 11
+    ABANICO         shift and go to state 12
+    DEF             shift and go to state 13
+    EN_CASO         shift and go to state 14
+    FOR             shift and go to state 15
+    IF              shift and go to state 16
+    SET             shift and go to state 17
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    statement                      shift and go to state 148
+    expr                           shift and go to state 6
+
+state 135
+
+    (32) Cuando -> CUANDO NOT_EQUAL NUMBER . EnTons
+    (38) EnTons -> . EN_TONS LBRACE statement RBRACE Sino
+    (39) EnTons -> . EN_TONS LBRACE statement RBRACE Cuando
+    EN_TONS         shift and go to state 150
+
+    EnTons                         shift and go to state 149
+
+state 136
+
+    (33) Cuando -> CUANDO EQUAL NUMBER . EnTons
+    (38) EnTons -> . EN_TONS LBRACE statement RBRACE Sino
+    (39) EnTons -> . EN_TONS LBRACE statement RBRACE Cuando
+    EN_TONS         shift and go to state 150
+
+    EnTons                         shift and go to state 151
+
+state 137
+
+    (34) Cuando -> CUANDO GE NUMBER . EnTons
+    (38) EnTons -> . EN_TONS LBRACE statement RBRACE Sino
+    (39) EnTons -> . EN_TONS LBRACE statement RBRACE Cuando
+    EN_TONS         shift and go to state 150
+
+    EnTons                         shift and go to state 152
+
+state 138
+
+    (35) Cuando -> CUANDO GT NUMBER . EnTons
+    (38) EnTons -> . EN_TONS LBRACE statement RBRACE Sino
+    (39) EnTons -> . EN_TONS LBRACE statement RBRACE Cuando
+    EN_TONS         shift and go to state 150
+
+    EnTons                         shift and go to state 153
+
+state 139
+
+    (36) Cuando -> CUANDO LE NUMBER . EnTons
+    (38) EnTons -> . EN_TONS LBRACE statement RBRACE Sino
+    (39) EnTons -> . EN_TONS LBRACE statement RBRACE Cuando
+    EN_TONS         shift and go to state 150
+
+    EnTons                         shift and go to state 154
+
+state 140
+
+    (37) Cuando -> CUANDO LT NUMBER . EnTons
+    (38) EnTons -> . EN_TONS LBRACE statement RBRACE Sino
+    (39) EnTons -> . EN_TONS LBRACE statement RBRACE Cuando
+    EN_TONS         shift and go to state 150
+
+    EnTons                         shift and go to state 155
+
+state 141
+
+    (24) statement -> FOR LPAREN NUMBER RPAREN TO . LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> FOR LPAREN NUMBER RPAREN TO . LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    LPAREN          shift and go to state 156
+
+
+state 142
+
+    (26) statement -> IF LPAREN expr RPAREN LBRACE . statement RBRACE
+    (27) statement -> IF LPAREN expr RPAREN LBRACE . statement RBRACE Else
+    (1) statement -> . NAME PERIOD NEGATION SEMI
+    (2) statement -> . NAME PERIOD LETTER_F SEMI
+    (3) statement -> . NAME PERIOD LETTER_T SEMI
+    (4) statement -> . PRINT LPAREN NUMBER RPAREN SEMI
+    (5) statement -> . PRINT LPAREN expr RPAREN SEMI
+    (6) statement -> . PRINT LPAREN NAME RPAREN SEMI
+    (7) statement -> . PRINT LPAREN STRING RPAREN SEMI
+    (8) statement -> . METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN SEMI
+    (9) statement -> . METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN SEMI
+    (10) statement -> . VIBRATO LPAREN NUMBER RPAREN SEMI
+    (11) statement -> . GOLPE LPAREN RPAREN SEMI
+    (12) statement -> . PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI
+    (13) statement -> . PERCUTOR LPAREN LETTER_A LETTER_B RPAREN SEMI
+    (14) statement -> . PERCUTOR LPAREN LETTER_I RPAREN SEMI
+    (15) statement -> . PERCUTOR LPAREN LETTER_D RPAREN SEMI
+    (16) statement -> . PERCUTOR LPAREN LETTER_B RPAREN SEMI
+    (17) statement -> . PERCUTOR LPAREN LETTER_A RPAREN SEMI
+    (18) statement -> . VERTICAL LPAREN LETTER_D RPAREN SEMI
+    (19) statement -> . VERTICAL LPAREN LETTER_I RPAREN SEMI
+    (20) statement -> . ABANICO LPAREN LETTER_A RPAREN SEMI
+    (21) statement -> . ABANICO LPAREN LETTER_B RPAREN SEMI
+    (22) statement -> . DEF NAME LPAREN RPAREN LBRACE statement RBRACE
+    (23) statement -> . EN_CASO NAME Cuando
+    (24) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (26) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE
+    (27) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE Else
+    (28) statement -> . SET NAME COMMA expr SEMI
+    (29) statement -> . expr
+    (30) statement -> . NAME ASSIGN expr SEMI
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 2
+    PRINT           shift and go to state 3
+    METRONOMO       shift and go to state 7
+    VIBRATO         shift and go to state 8
+    GOLPE           shift and go to state 9
+    PERCUTOR        shift and go to state 10
+    VERTICAL        shift and go to state 11
+    ABANICO         shift and go to state 12
+    DEF             shift and go to state 13
+    EN_CASO         shift and go to state 14
+    FOR             shift and go to state 15
+    IF              shift and go to state 16
+    SET             shift and go to state 17
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expr                           shift and go to state 6
+    statement                      shift and go to state 157
+
+state 143
+
+    (28) statement -> SET NAME COMMA expr SEMI .
+    $end            reduce using rule 28 (statement -> SET NAME COMMA expr SEMI .)
+    RBRACE          reduce using rule 28 (statement -> SET NAME COMMA expr SEMI .)
+
+
+state 144
+
+    (8) statement -> METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN . SEMI
+    SEMI            shift and go to state 158
+
+
+state 145
+
+    (9) statement -> METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN . SEMI
+    SEMI            shift and go to state 159
+
+
+state 146
+
+    (12) statement -> PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI .
+    $end            reduce using rule 12 (statement -> PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI .)
+    RBRACE          reduce using rule 12 (statement -> PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI .)
+
+
+state 147
+
+    (13) statement -> PERCUTOR LPAREN LETTER_A LETTER_B RPAREN SEMI .
+    $end            reduce using rule 13 (statement -> PERCUTOR LPAREN LETTER_A LETTER_B RPAREN SEMI .)
+    RBRACE          reduce using rule 13 (statement -> PERCUTOR LPAREN LETTER_A LETTER_B RPAREN SEMI .)
+
+
+state 148
+
+    (22) statement -> DEF NAME LPAREN RPAREN LBRACE statement . RBRACE
+    RBRACE          shift and go to state 160
+
+
+state 149
+
+    (32) Cuando -> CUANDO NOT_EQUAL NUMBER EnTons .
+    $end            reduce using rule 32 (Cuando -> CUANDO NOT_EQUAL NUMBER EnTons .)
+    RBRACE          reduce using rule 32 (Cuando -> CUANDO NOT_EQUAL NUMBER EnTons .)
+
+
+state 150
+
+    (38) EnTons -> EN_TONS . LBRACE statement RBRACE Sino
+    (39) EnTons -> EN_TONS . LBRACE statement RBRACE Cuando
+    LBRACE          shift and go to state 161
+
+
+state 151
+
+    (33) Cuando -> CUANDO EQUAL NUMBER EnTons .
+    $end            reduce using rule 33 (Cuando -> CUANDO EQUAL NUMBER EnTons .)
+    RBRACE          reduce using rule 33 (Cuando -> CUANDO EQUAL NUMBER EnTons .)
+
+
+state 152
+
+    (34) Cuando -> CUANDO GE NUMBER EnTons .
+    $end            reduce using rule 34 (Cuando -> CUANDO GE NUMBER EnTons .)
+    RBRACE          reduce using rule 34 (Cuando -> CUANDO GE NUMBER EnTons .)
+
+
+state 153
+
+    (35) Cuando -> CUANDO GT NUMBER EnTons .
+    $end            reduce using rule 35 (Cuando -> CUANDO GT NUMBER EnTons .)
+    RBRACE          reduce using rule 35 (Cuando -> CUANDO GT NUMBER EnTons .)
+
+
+state 154
+
+    (36) Cuando -> CUANDO LE NUMBER EnTons .
+    $end            reduce using rule 36 (Cuando -> CUANDO LE NUMBER EnTons .)
+    RBRACE          reduce using rule 36 (Cuando -> CUANDO LE NUMBER EnTons .)
+
+
+state 155
+
+    (37) Cuando -> CUANDO LT NUMBER EnTons .
+    $end            reduce using rule 37 (Cuando -> CUANDO LT NUMBER EnTons .)
+    RBRACE          reduce using rule 37 (Cuando -> CUANDO LT NUMBER EnTons .)
+
+
+state 156
+
+    (24) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN . NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN . NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    NUMBER          shift and go to state 162
+
+
+state 157
+
+    (26) statement -> IF LPAREN expr RPAREN LBRACE statement . RBRACE
+    (27) statement -> IF LPAREN expr RPAREN LBRACE statement . RBRACE Else
+    RBRACE          shift and go to state 163
+
+
+state 158
+
+    (8) statement -> METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN SEMI .
+    $end            reduce using rule 8 (statement -> METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN SEMI .)
+    RBRACE          reduce using rule 8 (statement -> METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN SEMI .)
+
+
+state 159
+
+    (9) statement -> METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN SEMI .
+    $end            reduce using rule 9 (statement -> METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN SEMI .)
+    RBRACE          reduce using rule 9 (statement -> METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN SEMI .)
+
+
+state 160
+
+    (22) statement -> DEF NAME LPAREN RPAREN LBRACE statement RBRACE .
+    $end            reduce using rule 22 (statement -> DEF NAME LPAREN RPAREN LBRACE statement RBRACE .)
+    RBRACE          reduce using rule 22 (statement -> DEF NAME LPAREN RPAREN LBRACE statement RBRACE .)
+
+
+state 161
+
+    (38) EnTons -> EN_TONS LBRACE . statement RBRACE Sino
+    (39) EnTons -> EN_TONS LBRACE . statement RBRACE Cuando
+    (1) statement -> . NAME PERIOD NEGATION SEMI
+    (2) statement -> . NAME PERIOD LETTER_F SEMI
+    (3) statement -> . NAME PERIOD LETTER_T SEMI
+    (4) statement -> . PRINT LPAREN NUMBER RPAREN SEMI
+    (5) statement -> . PRINT LPAREN expr RPAREN SEMI
+    (6) statement -> . PRINT LPAREN NAME RPAREN SEMI
+    (7) statement -> . PRINT LPAREN STRING RPAREN SEMI
+    (8) statement -> . METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN SEMI
+    (9) statement -> . METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN SEMI
+    (10) statement -> . VIBRATO LPAREN NUMBER RPAREN SEMI
+    (11) statement -> . GOLPE LPAREN RPAREN SEMI
+    (12) statement -> . PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI
+    (13) statement -> . PERCUTOR LPAREN LETTER_A LETTER_B RPAREN SEMI
+    (14) statement -> . PERCUTOR LPAREN LETTER_I RPAREN SEMI
+    (15) statement -> . PERCUTOR LPAREN LETTER_D RPAREN SEMI
+    (16) statement -> . PERCUTOR LPAREN LETTER_B RPAREN SEMI
+    (17) statement -> . PERCUTOR LPAREN LETTER_A RPAREN SEMI
+    (18) statement -> . VERTICAL LPAREN LETTER_D RPAREN SEMI
+    (19) statement -> . VERTICAL LPAREN LETTER_I RPAREN SEMI
+    (20) statement -> . ABANICO LPAREN LETTER_A RPAREN SEMI
+    (21) statement -> . ABANICO LPAREN LETTER_B RPAREN SEMI
+    (22) statement -> . DEF NAME LPAREN RPAREN LBRACE statement RBRACE
+    (23) statement -> . EN_CASO NAME Cuando
+    (24) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (26) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE
+    (27) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE Else
+    (28) statement -> . SET NAME COMMA expr SEMI
+    (29) statement -> . expr
+    (30) statement -> . NAME ASSIGN expr SEMI
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 2
+    PRINT           shift and go to state 3
+    METRONOMO       shift and go to state 7
+    VIBRATO         shift and go to state 8
+    GOLPE           shift and go to state 9
+    PERCUTOR        shift and go to state 10
+    VERTICAL        shift and go to state 11
+    ABANICO         shift and go to state 12
+    DEF             shift and go to state 13
+    EN_CASO         shift and go to state 14
+    FOR             shift and go to state 15
+    IF              shift and go to state 16
+    SET             shift and go to state 17
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    statement                      shift and go to state 164
+    expr                           shift and go to state 6
+
+state 162
+
+    (24) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER . RPAREN LBRACE statement RBRACE
+    (25) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER . RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    RPAREN          shift and go to state 165
+
+
+state 163
+
+    (26) statement -> IF LPAREN expr RPAREN LBRACE statement RBRACE .
+    (27) statement -> IF LPAREN expr RPAREN LBRACE statement RBRACE . Else
+    (31) Else -> . ELSE LBRACE statement RBRACE
+    $end            reduce using rule 26 (statement -> IF LPAREN expr RPAREN LBRACE statement RBRACE .)
+    RBRACE          reduce using rule 26 (statement -> IF LPAREN expr RPAREN LBRACE statement RBRACE .)
+    ELSE            shift and go to state 167
+
+    Else                           shift and go to state 166
+
+state 164
+
+    (38) EnTons -> EN_TONS LBRACE statement . RBRACE Sino
+    (39) EnTons -> EN_TONS LBRACE statement . RBRACE Cuando
+    RBRACE          shift and go to state 168
+
+
+state 165
+
+    (24) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN . LBRACE statement RBRACE
+    (25) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN . STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    LBRACE          shift and go to state 169
+    STEP            shift and go to state 170
+
+
+state 166
+
+    (27) statement -> IF LPAREN expr RPAREN LBRACE statement RBRACE Else .
+    $end            reduce using rule 27 (statement -> IF LPAREN expr RPAREN LBRACE statement RBRACE Else .)
+    RBRACE          reduce using rule 27 (statement -> IF LPAREN expr RPAREN LBRACE statement RBRACE Else .)
+
+
+state 167
+
+    (31) Else -> ELSE . LBRACE statement RBRACE
+    LBRACE          shift and go to state 171
+
+
+state 168
+
+    (38) EnTons -> EN_TONS LBRACE statement RBRACE . Sino
+    (39) EnTons -> EN_TONS LBRACE statement RBRACE . Cuando
+    (40) Sino -> . SI_NO LBRACE statement RBRACE FIN_EN_CASO
+    (32) Cuando -> . CUANDO NOT_EQUAL NUMBER EnTons
+    (33) Cuando -> . CUANDO EQUAL NUMBER EnTons
+    (34) Cuando -> . CUANDO GE NUMBER EnTons
+    (35) Cuando -> . CUANDO GT NUMBER EnTons
+    (36) Cuando -> . CUANDO LE NUMBER EnTons
+    (37) Cuando -> . CUANDO LT NUMBER EnTons
+    SI_NO           shift and go to state 174
+    CUANDO          shift and go to state 81
+
+    Sino                           shift and go to state 172
+    Cuando                         shift and go to state 173
+
+state 169
+
+    (24) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE . statement RBRACE
+    (1) statement -> . NAME PERIOD NEGATION SEMI
+    (2) statement -> . NAME PERIOD LETTER_F SEMI
+    (3) statement -> . NAME PERIOD LETTER_T SEMI
+    (4) statement -> . PRINT LPAREN NUMBER RPAREN SEMI
+    (5) statement -> . PRINT LPAREN expr RPAREN SEMI
+    (6) statement -> . PRINT LPAREN NAME RPAREN SEMI
+    (7) statement -> . PRINT LPAREN STRING RPAREN SEMI
+    (8) statement -> . METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN SEMI
+    (9) statement -> . METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN SEMI
+    (10) statement -> . VIBRATO LPAREN NUMBER RPAREN SEMI
+    (11) statement -> . GOLPE LPAREN RPAREN SEMI
+    (12) statement -> . PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI
+    (13) statement -> . PERCUTOR LPAREN LETTER_A LETTER_B RPAREN SEMI
+    (14) statement -> . PERCUTOR LPAREN LETTER_I RPAREN SEMI
+    (15) statement -> . PERCUTOR LPAREN LETTER_D RPAREN SEMI
+    (16) statement -> . PERCUTOR LPAREN LETTER_B RPAREN SEMI
+    (17) statement -> . PERCUTOR LPAREN LETTER_A RPAREN SEMI
+    (18) statement -> . VERTICAL LPAREN LETTER_D RPAREN SEMI
+    (19) statement -> . VERTICAL LPAREN LETTER_I RPAREN SEMI
+    (20) statement -> . ABANICO LPAREN LETTER_A RPAREN SEMI
+    (21) statement -> . ABANICO LPAREN LETTER_B RPAREN SEMI
+    (22) statement -> . DEF NAME LPAREN RPAREN LBRACE statement RBRACE
+    (23) statement -> . EN_CASO NAME Cuando
+    (24) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (26) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE
+    (27) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE Else
+    (28) statement -> . SET NAME COMMA expr SEMI
+    (29) statement -> . expr
+    (30) statement -> . NAME ASSIGN expr SEMI
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 2
+    PRINT           shift and go to state 3
+    METRONOMO       shift and go to state 7
+    VIBRATO         shift and go to state 8
+    GOLPE           shift and go to state 9
+    PERCUTOR        shift and go to state 10
+    VERTICAL        shift and go to state 11
+    ABANICO         shift and go to state 12
+    DEF             shift and go to state 13
+    EN_CASO         shift and go to state 14
+    FOR             shift and go to state 15
+    IF              shift and go to state 16
+    SET             shift and go to state 17
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    statement                      shift and go to state 175
+    expr                           shift and go to state 6
+
+state 170
+
+    (25) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP . LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    LPAREN          shift and go to state 176
+
+
+state 171
+
+    (31) Else -> ELSE LBRACE . statement RBRACE
+    (1) statement -> . NAME PERIOD NEGATION SEMI
+    (2) statement -> . NAME PERIOD LETTER_F SEMI
+    (3) statement -> . NAME PERIOD LETTER_T SEMI
+    (4) statement -> . PRINT LPAREN NUMBER RPAREN SEMI
+    (5) statement -> . PRINT LPAREN expr RPAREN SEMI
+    (6) statement -> . PRINT LPAREN NAME RPAREN SEMI
+    (7) statement -> . PRINT LPAREN STRING RPAREN SEMI
+    (8) statement -> . METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN SEMI
+    (9) statement -> . METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN SEMI
+    (10) statement -> . VIBRATO LPAREN NUMBER RPAREN SEMI
+    (11) statement -> . GOLPE LPAREN RPAREN SEMI
+    (12) statement -> . PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI
+    (13) statement -> . PERCUTOR LPAREN LETTER_A LETTER_B RPAREN SEMI
+    (14) statement -> . PERCUTOR LPAREN LETTER_I RPAREN SEMI
+    (15) statement -> . PERCUTOR LPAREN LETTER_D RPAREN SEMI
+    (16) statement -> . PERCUTOR LPAREN LETTER_B RPAREN SEMI
+    (17) statement -> . PERCUTOR LPAREN LETTER_A RPAREN SEMI
+    (18) statement -> . VERTICAL LPAREN LETTER_D RPAREN SEMI
+    (19) statement -> . VERTICAL LPAREN LETTER_I RPAREN SEMI
+    (20) statement -> . ABANICO LPAREN LETTER_A RPAREN SEMI
+    (21) statement -> . ABANICO LPAREN LETTER_B RPAREN SEMI
+    (22) statement -> . DEF NAME LPAREN RPAREN LBRACE statement RBRACE
+    (23) statement -> . EN_CASO NAME Cuando
+    (24) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (26) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE
+    (27) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE Else
+    (28) statement -> . SET NAME COMMA expr SEMI
+    (29) statement -> . expr
+    (30) statement -> . NAME ASSIGN expr SEMI
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 2
+    PRINT           shift and go to state 3
+    METRONOMO       shift and go to state 7
+    VIBRATO         shift and go to state 8
+    GOLPE           shift and go to state 9
+    PERCUTOR        shift and go to state 10
+    VERTICAL        shift and go to state 11
+    ABANICO         shift and go to state 12
+    DEF             shift and go to state 13
+    EN_CASO         shift and go to state 14
+    FOR             shift and go to state 15
+    IF              shift and go to state 16
+    SET             shift and go to state 17
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    statement                      shift and go to state 177
+    expr                           shift and go to state 6
+
+state 172
+
+    (38) EnTons -> EN_TONS LBRACE statement RBRACE Sino .
+    $end            reduce using rule 38 (EnTons -> EN_TONS LBRACE statement RBRACE Sino .)
+    RBRACE          reduce using rule 38 (EnTons -> EN_TONS LBRACE statement RBRACE Sino .)
+
+
+state 173
+
+    (39) EnTons -> EN_TONS LBRACE statement RBRACE Cuando .
+    $end            reduce using rule 39 (EnTons -> EN_TONS LBRACE statement RBRACE Cuando .)
+    RBRACE          reduce using rule 39 (EnTons -> EN_TONS LBRACE statement RBRACE Cuando .)
+
+
+state 174
+
+    (40) Sino -> SI_NO . LBRACE statement RBRACE FIN_EN_CASO
+    LBRACE          shift and go to state 178
+
+
+state 175
+
+    (24) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement . RBRACE
+    RBRACE          shift and go to state 179
+
+
+state 176
+
+    (25) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN . NUMBER RPAREN LBRACE statement RBRACE
+    NUMBER          shift and go to state 180
+
+
+state 177
+
+    (31) Else -> ELSE LBRACE statement . RBRACE
+    RBRACE          shift and go to state 181
+
+
+state 178
+
+    (40) Sino -> SI_NO LBRACE . statement RBRACE FIN_EN_CASO
+    (1) statement -> . NAME PERIOD NEGATION SEMI
+    (2) statement -> . NAME PERIOD LETTER_F SEMI
+    (3) statement -> . NAME PERIOD LETTER_T SEMI
+    (4) statement -> . PRINT LPAREN NUMBER RPAREN SEMI
+    (5) statement -> . PRINT LPAREN expr RPAREN SEMI
+    (6) statement -> . PRINT LPAREN NAME RPAREN SEMI
+    (7) statement -> . PRINT LPAREN STRING RPAREN SEMI
+    (8) statement -> . METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN SEMI
+    (9) statement -> . METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN SEMI
+    (10) statement -> . VIBRATO LPAREN NUMBER RPAREN SEMI
+    (11) statement -> . GOLPE LPAREN RPAREN SEMI
+    (12) statement -> . PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI
+    (13) statement -> . PERCUTOR LPAREN LETTER_A LETTER_B RPAREN SEMI
+    (14) statement -> . PERCUTOR LPAREN LETTER_I RPAREN SEMI
+    (15) statement -> . PERCUTOR LPAREN LETTER_D RPAREN SEMI
+    (16) statement -> . PERCUTOR LPAREN LETTER_B RPAREN SEMI
+    (17) statement -> . PERCUTOR LPAREN LETTER_A RPAREN SEMI
+    (18) statement -> . VERTICAL LPAREN LETTER_D RPAREN SEMI
+    (19) statement -> . VERTICAL LPAREN LETTER_I RPAREN SEMI
+    (20) statement -> . ABANICO LPAREN LETTER_A RPAREN SEMI
+    (21) statement -> . ABANICO LPAREN LETTER_B RPAREN SEMI
+    (22) statement -> . DEF NAME LPAREN RPAREN LBRACE statement RBRACE
+    (23) statement -> . EN_CASO NAME Cuando
+    (24) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (26) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE
+    (27) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE Else
+    (28) statement -> . SET NAME COMMA expr SEMI
+    (29) statement -> . expr
+    (30) statement -> . NAME ASSIGN expr SEMI
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 2
+    PRINT           shift and go to state 3
+    METRONOMO       shift and go to state 7
+    VIBRATO         shift and go to state 8
+    GOLPE           shift and go to state 9
+    PERCUTOR        shift and go to state 10
+    VERTICAL        shift and go to state 11
+    ABANICO         shift and go to state 12
+    DEF             shift and go to state 13
+    EN_CASO         shift and go to state 14
+    FOR             shift and go to state 15
+    IF              shift and go to state 16
+    SET             shift and go to state 17
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    statement                      shift and go to state 182
+    expr                           shift and go to state 6
+
+state 179
+
+    (24) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE .
+    $end            reduce using rule 24 (statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE .)
+    RBRACE          reduce using rule 24 (statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE .)
+
+
+state 180
+
+    (25) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER . RPAREN LBRACE statement RBRACE
+    RPAREN          shift and go to state 183
+
+
+state 181
+
+    (31) Else -> ELSE LBRACE statement RBRACE .
+    $end            reduce using rule 31 (Else -> ELSE LBRACE statement RBRACE .)
+    RBRACE          reduce using rule 31 (Else -> ELSE LBRACE statement RBRACE .)
+
+
+state 182
+
+    (40) Sino -> SI_NO LBRACE statement . RBRACE FIN_EN_CASO
+    RBRACE          shift and go to state 184
+
+
+state 183
+
+    (25) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN . LBRACE statement RBRACE
+    LBRACE          shift and go to state 185
+
+
+state 184
+
+    (40) Sino -> SI_NO LBRACE statement RBRACE . FIN_EN_CASO
+    FIN_EN_CASO     shift and go to state 186
+
+
+state 185
+
+    (25) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE . statement RBRACE
+    (1) statement -> . NAME PERIOD NEGATION SEMI
+    (2) statement -> . NAME PERIOD LETTER_F SEMI
+    (3) statement -> . NAME PERIOD LETTER_T SEMI
+    (4) statement -> . PRINT LPAREN NUMBER RPAREN SEMI
+    (5) statement -> . PRINT LPAREN expr RPAREN SEMI
+    (6) statement -> . PRINT LPAREN NAME RPAREN SEMI
+    (7) statement -> . PRINT LPAREN STRING RPAREN SEMI
+    (8) statement -> . METRONOMO LPAREN LETTER_D COMMA NUMBER RPAREN SEMI
+    (9) statement -> . METRONOMO LPAREN LETTER_A COMMA NUMBER RPAREN SEMI
+    (10) statement -> . VIBRATO LPAREN NUMBER RPAREN SEMI
+    (11) statement -> . GOLPE LPAREN RPAREN SEMI
+    (12) statement -> . PERCUTOR LPAREN LETTER_D LETTER_I RPAREN SEMI
+    (13) statement -> . PERCUTOR LPAREN LETTER_A LETTER_B RPAREN SEMI
+    (14) statement -> . PERCUTOR LPAREN LETTER_I RPAREN SEMI
+    (15) statement -> . PERCUTOR LPAREN LETTER_D RPAREN SEMI
+    (16) statement -> . PERCUTOR LPAREN LETTER_B RPAREN SEMI
+    (17) statement -> . PERCUTOR LPAREN LETTER_A RPAREN SEMI
+    (18) statement -> . VERTICAL LPAREN LETTER_D RPAREN SEMI
+    (19) statement -> . VERTICAL LPAREN LETTER_I RPAREN SEMI
+    (20) statement -> . ABANICO LPAREN LETTER_A RPAREN SEMI
+    (21) statement -> . ABANICO LPAREN LETTER_B RPAREN SEMI
+    (22) statement -> . DEF NAME LPAREN RPAREN LBRACE statement RBRACE
+    (23) statement -> . EN_CASO NAME Cuando
+    (24) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (25) statement -> . FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE
+    (26) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE
+    (27) statement -> . IF LPAREN expr RPAREN LBRACE statement RBRACE Else
+    (28) statement -> . SET NAME COMMA expr SEMI
+    (29) statement -> . expr
+    (30) statement -> . NAME ASSIGN expr SEMI
+    (41) expr -> . NAME
+    (42) expr -> . NUMBER
+    (43) expr -> . LPAREN expr RPAREN
+    (44) expr -> . expr NOT_EQUAL expr
+    (45) expr -> . expr EQUAL expr
+    (46) expr -> . expr GE expr
+    (47) expr -> . expr GT expr
+    (48) expr -> . expr LE expr
+    (49) expr -> . expr LT expr
+    (50) expr -> . expr INT_DIVIDE expr
+    (51) expr -> . expr MODULE expr
+    (52) expr -> . expr DIVIDE expr
+    (53) expr -> . expr TIMES expr
+    (54) expr -> . expr MINUS expr
+    (55) expr -> . expr PLUS expr
+    NAME            shift and go to state 2
+    PRINT           shift and go to state 3
+    METRONOMO       shift and go to state 7
+    VIBRATO         shift and go to state 8
+    GOLPE           shift and go to state 9
+    PERCUTOR        shift and go to state 10
+    VERTICAL        shift and go to state 11
+    ABANICO         shift and go to state 12
+    DEF             shift and go to state 13
+    EN_CASO         shift and go to state 14
+    FOR             shift and go to state 15
+    IF              shift and go to state 16
+    SET             shift and go to state 17
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    statement                      shift and go to state 187
+    expr                           shift and go to state 6
+
+state 186
+
+    (40) Sino -> SI_NO LBRACE statement RBRACE FIN_EN_CASO .
+    $end            reduce using rule 40 (Sino -> SI_NO LBRACE statement RBRACE FIN_EN_CASO .)
+    RBRACE          reduce using rule 40 (Sino -> SI_NO LBRACE statement RBRACE FIN_EN_CASO .)
+
+
+state 187
+
+    (25) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement . RBRACE
+    RBRACE          shift and go to state 188
+
+
+state 188
+
+    (25) statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE .
+    $end            reduce using rule 25 (statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE .)
+    RBRACE          reduce using rule 25 (statement -> FOR LPAREN NUMBER RPAREN TO LPAREN NUMBER RPAREN STEP LPAREN NUMBER RPAREN LBRACE statement RBRACE .)
+
+
+Conflicts:
+
+shift/reduce conflict for RPAREN in state 50 resolved as shift
+shift/reduce conflict for RPAREN in state 52 resolved as shift
+shift/reduce conflict for NOT_EQUAL in state 55 resolved as shift
+shift/reduce conflict for EQUAL in state 55 resolved as shift
+shift/reduce conflict for GE in state 55 resolved as shift
+shift/reduce conflict for GT in state 55 resolved as shift
+shift/reduce conflict for LE in state 55 resolved as shift
+shift/reduce conflict for LT in state 55 resolved as shift
+shift/reduce conflict for INT_DIVIDE in state 55 resolved as shift
+shift/reduce conflict for MODULE in state 55 resolved as shift
+shift/reduce conflict for DIVIDE in state 55 resolved as shift
+shift/reduce conflict for TIMES in state 55 resolved as shift
+shift/reduce conflict for MINUS in state 55 resolved as shift
+shift/reduce conflict for PLUS in state 55 resolved as shift
+shift/reduce conflict for NOT_EQUAL in state 56 resolved as shift
+shift/reduce conflict for EQUAL in state 56 resolved as shift
+shift/reduce conflict for GE in state 56 resolved as shift
+shift/reduce conflict for GT in state 56 resolved as shift
+shift/reduce conflict for LE in state 56 resolved as shift
+shift/reduce conflict for LT in state 56 resolved as shift
+shift/reduce conflict for INT_DIVIDE in state 56 resolved as shift
+shift/reduce conflict for MODULE in state 56 resolved as shift
+shift/reduce conflict for DIVIDE in state 56 resolved as shift
+shift/reduce conflict for TIMES in state 56 resolved as shift
+shift/reduce conflict for MINUS in state 56 resolved as shift
+shift/reduce conflict for PLUS in state 56 resolved as shift
+shift/reduce conflict for NOT_EQUAL in state 57 resolved as shift
+shift/reduce conflict for EQUAL in state 57 resolved as shift
+shift/reduce conflict for GE in state 57 resolved as shift
+shift/reduce conflict for GT in state 57 resolved as shift
+shift/reduce conflict for LE in state 57 resolved as shift
+shift/reduce conflict for LT in state 57 resolved as shift
+shift/reduce conflict for INT_DIVIDE in state 57 resolved as shift
+shift/reduce conflict for MODULE in state 57 resolved as shift
+shift/reduce conflict for DIVIDE in state 57 resolved as shift
+shift/reduce conflict for TIMES in state 57 resolved as shift
+shift/reduce conflict for MINUS in state 57 resolved as shift
+shift/reduce conflict for PLUS in state 57 resolved as shift
+shift/reduce conflict for NOT_EQUAL in state 58 resolved as shift
+shift/reduce conflict for EQUAL in state 58 resolved as shift
+shift/reduce conflict for GE in state 58 resolved as shift
+shift/reduce conflict for GT in state 58 resolved as shift
+shift/reduce conflict for LE in state 58 resolved as shift
+shift/reduce conflict for LT in state 58 resolved as shift
+shift/reduce conflict for INT_DIVIDE in state 58 resolved as shift
+shift/reduce conflict for MODULE in state 58 resolved as shift
+shift/reduce conflict for DIVIDE in state 58 resolved as shift
+shift/reduce conflict for TIMES in state 58 resolved as shift
+shift/reduce conflict for MINUS in state 58 resolved as shift
+shift/reduce conflict for PLUS in state 58 resolved as shift
+shift/reduce conflict for NOT_EQUAL in state 59 resolved as shift
+shift/reduce conflict for EQUAL in state 59 resolved as shift
+shift/reduce conflict for GE in state 59 resolved as shift
+shift/reduce conflict for GT in state 59 resolved as shift
+shift/reduce conflict for LE in state 59 resolved as shift
+shift/reduce conflict for LT in state 59 resolved as shift
+shift/reduce conflict for INT_DIVIDE in state 59 resolved as shift
+shift/reduce conflict for MODULE in state 59 resolved as shift
+shift/reduce conflict for DIVIDE in state 59 resolved as shift
+shift/reduce conflict for TIMES in state 59 resolved as shift
+shift/reduce conflict for MINUS in state 59 resolved as shift
+shift/reduce conflict for PLUS in state 59 resolved as shift
+shift/reduce conflict for NOT_EQUAL in state 60 resolved as shift
+shift/reduce conflict for EQUAL in state 60 resolved as shift
+shift/reduce conflict for GE in state 60 resolved as shift
+shift/reduce conflict for GT in state 60 resolved as shift
+shift/reduce conflict for LE in state 60 resolved as shift
+shift/reduce conflict for LT in state 60 resolved as shift
+shift/reduce conflict for INT_DIVIDE in state 60 resolved as shift
+shift/reduce conflict for MODULE in state 60 resolved as shift
+shift/reduce conflict for DIVIDE in state 60 resolved as shift
+shift/reduce conflict for TIMES in state 60 resolved as shift
+shift/reduce conflict for MINUS in state 60 resolved as shift
+shift/reduce conflict for PLUS in state 60 resolved as shift
+shift/reduce conflict for NOT_EQUAL in state 61 resolved as shift
+shift/reduce conflict for EQUAL in state 61 resolved as shift
+shift/reduce conflict for GE in state 61 resolved as shift
+shift/reduce conflict for GT in state 61 resolved as shift
+shift/reduce conflict for LE in state 61 resolved as shift
+shift/reduce conflict for LT in state 61 resolved as shift
+shift/reduce conflict for INT_DIVIDE in state 61 resolved as shift
+shift/reduce conflict for MODULE in state 61 resolved as shift
+shift/reduce conflict for DIVIDE in state 61 resolved as shift
+shift/reduce conflict for TIMES in state 61 resolved as shift
+shift/reduce conflict for MINUS in state 61 resolved as shift
+shift/reduce conflict for PLUS in state 61 resolved as shift
+shift/reduce conflict for NOT_EQUAL in state 62 resolved as shift
+shift/reduce conflict for EQUAL in state 62 resolved as shift
+shift/reduce conflict for GE in state 62 resolved as shift
+shift/reduce conflict for GT in state 62 resolved as shift
+shift/reduce conflict for LE in state 62 resolved as shift
+shift/reduce conflict for LT in state 62 resolved as shift
+shift/reduce conflict for INT_DIVIDE in state 62 resolved as shift
+shift/reduce conflict for MODULE in state 62 resolved as shift
+shift/reduce conflict for DIVIDE in state 62 resolved as shift
+shift/reduce conflict for TIMES in state 62 resolved as shift
+shift/reduce conflict for MINUS in state 62 resolved as shift
+shift/reduce conflict for PLUS in state 62 resolved as shift
+shift/reduce conflict for NOT_EQUAL in state 63 resolved as shift
+shift/reduce conflict for EQUAL in state 63 resolved as shift
+shift/reduce conflict for GE in state 63 resolved as shift
+shift/reduce conflict for GT in state 63 resolved as shift
+shift/reduce conflict for LE in state 63 resolved as shift
+shift/reduce conflict for LT in state 63 resolved as shift
+shift/reduce conflict for INT_DIVIDE in state 63 resolved as shift
+shift/reduce conflict for MODULE in state 63 resolved as shift
+shift/reduce conflict for DIVIDE in state 63 resolved as shift
+shift/reduce conflict for TIMES in state 63 resolved as shift
+shift/reduce conflict for MINUS in state 63 resolved as shift
+shift/reduce conflict for PLUS in state 63 resolved as shift
+shift/reduce conflict for NOT_EQUAL in state 64 resolved as shift
+shift/reduce conflict for EQUAL in state 64 resolved as shift
+shift/reduce conflict for GE in state 64 resolved as shift
+shift/reduce conflict for GT in state 64 resolved as shift
+shift/reduce conflict for LE in state 64 resolved as shift
+shift/reduce conflict for LT in state 64 resolved as shift
+shift/reduce conflict for INT_DIVIDE in state 64 resolved as shift
+shift/reduce conflict for MODULE in state 64 resolved as shift
+shift/reduce conflict for DIVIDE in state 64 resolved as shift
+shift/reduce conflict for TIMES in state 64 resolved as shift
+shift/reduce conflict for MINUS in state 64 resolved as shift
+shift/reduce conflict for PLUS in state 64 resolved as shift
+shift/reduce conflict for NOT_EQUAL in state 65 resolved as shift
+shift/reduce conflict for EQUAL in state 65 resolved as shift
+shift/reduce conflict for GE in state 65 resolved as shift
+shift/reduce conflict for GT in state 65 resolved as shift
+shift/reduce conflict for LE in state 65 resolved as shift
+shift/reduce conflict for LT in state 65 resolved as shift
+shift/reduce conflict for INT_DIVIDE in state 65 resolved as shift
+shift/reduce conflict for MODULE in state 65 resolved as shift
+shift/reduce conflict for DIVIDE in state 65 resolved as shift
+shift/reduce conflict for TIMES in state 65 resolved as shift
+shift/reduce conflict for MINUS in state 65 resolved as shift
+shift/reduce conflict for PLUS in state 65 resolved as shift
+shift/reduce conflict for NOT_EQUAL in state 66 resolved as shift
+shift/reduce conflict for EQUAL in state 66 resolved as shift
+shift/reduce conflict for GE in state 66 resolved as shift
+shift/reduce conflict for GT in state 66 resolved as shift
+shift/reduce conflict for LE in state 66 resolved as shift
+shift/reduce conflict for LT in state 66 resolved as shift
+shift/reduce conflict for INT_DIVIDE in state 66 resolved as shift
+shift/reduce conflict for MODULE in state 66 resolved as shift
+shift/reduce conflict for DIVIDE in state 66 resolved as shift
+shift/reduce conflict for TIMES in state 66 resolved as shift
+shift/reduce conflict for MINUS in state 66 resolved as shift
+shift/reduce conflict for PLUS in state 66 resolved as shift

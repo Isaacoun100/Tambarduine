@@ -58,7 +58,8 @@ class IDE:
         self.code_Text = Text(self.ide_window,
                               font=("Helvetica", 14),
                               bg="#282C34", bd=1,  # 282C34
-                              fg="#FFFFFF", highlightthickness=1)
+                              fg="#FFFFFF", highlightthickness=1,
+                              insertbackground='white')
 
         self.code_Text.place(x=20, y=10, width=1850, height=800)
 
