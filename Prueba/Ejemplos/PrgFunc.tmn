@@ -1,0 +1,25 @@
+Def Principal ()		
+{		
+Set @Variable1, 5 # Variables globales		
+Set @x1, 20		
+Metronomo ( A, 0.5);		
+Set @variable, False		
+Exec @MiRutina(2);		
+Exec @MiRutina(@Variable1);		
+}		
+		
+Set @Var1, 1;		
+for @var1 to 100 Step 2		
+{ 		Set  @var1, @var1 
+	EnCaso	 @Var1
+	Cuando  <  20 EnTons	
+	{ Abanico ( A ); Abanico ( B ); }	
+	Cuando <50  EnTons	
+	{ Vertical ( D );   Vertical ( I ); }	
+	Cuando <70  EnTons	
+	{ Percutor ( D ); Percutor ( I ); Percutor ( A ); Percutor ( B ); Percutor ( DI ); Percutor ( AB ); }	
+		
+	SiNo	
+	{ Golpe ();  Vibrato ( 5 ); }	
+	Fin-EnCaso;	
+ }		
