@@ -1,3 +1,3 @@
 import Firmata.Instructions as f
-
-f.Abanico("A", T)
+T=1
+f.T = 1

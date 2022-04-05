@@ -1,0 +1,217 @@
+					
+					
+Def @MiRutina2 ()   {					
+					
+	SET @variable1, true;				
+	println! ("Prueba 1 ",type(@Variable1) );				
+					
+	SET @variable2, 100;				
+	println! ("Prueba 2 ",type(@Variable2) );				
+					
+					
+}					
+					
+Def @MiRutina3 ()   {					
+	SET @x123, 5 + 6    # ( x es 11)				
+	println! ("Prueba 3 es 11 =  ",@x123 );				
+					
+	SET @x123, 5 - 6   # (x es -1)				
+	println! ("Prueba 4 es -1 =  ",@x123);				
+					
+	SET @x123, 5;				
+	SET @x123, -@x123  #( x es -5)				
+	println! ("Prueba 5 es -5 =  ",@x123 );				
+					
+	SET @x123, 5 * 5   #(@x123 es 25)				
+	println! ("Prueba 6 es 25 =  ",@x123 );				
+					
+	SET @x123, 2 ** 3   # (@x123 es 8)				
+	println! ("Prueba 7 es 8 =  ",@x123 );				
+					
+	SET @x123, 77 / 8   #(@x123 es 9.625)				
+	println! ("Prueba 8 es 9.625 =  ",@x123));				
+					
+	SET @x123, 77 // 8   #(@x123 es 9)				
+	println! ("Prueba 9 es 9 =  ",@x123 );				
+					
+	SET @x123, 5 % 2   # (@x123 es 1)				
+	println! ("Prueba 10 es 1 =  ",@x123 );				
+					
+	SET @var1,  @x12 + @y32 * 10 / 4;				
+	println! ("Prueba 11 es 23,25 =  ",@var1 );				
+					
+	SET @var1,  @x2 + ((@98y * 10) / 4);				
+	println! ("Prueba 12 es 23,25 =  ",@var1 );				
+					
+	SET @var1, ((@x12 + @y098) * 10) / 4;				
+	println! ("Prueba 13 es33,75 =  ",@var1 );				
+					
+		}			
+					
+Def @MiRutina4 ()   {					
+					
+	Set @x12, true; # Es True				
+	println! ("Prueba 14 es True =  ",@x12));				
+					
+	Set @x12.Neg; # Ahora @x12 es False				
+	println! ("Prueba 15 es False =  ",@x12 );				
+					
+	Set @x12.Neg; # Ahora @x12 es True				
+	println! ("Prueba 16 es True =  ",@x12));				
+					
+	Set @x12.T # Significa que x ahora tiene el valor True				
+	println! ("Prueba 17 es True =  ",@x12);				
+					
+	Set @x12.F # Significa que x ahora tiene el valor False				
+	println! ("Prueba 18 es False =  ",@x12 );				
+					
+		}			
+					
+					
+Def @MiRutina5 ()   {					
+	println! ("Prueba 19 Retorna 1,2 y3");				
+	Set @x1, 3;				
+	for @var1 to @x1 Step 1				
+	{ println! ("Valor: ", @var1 ); }				
+					
+	println! ("Prueba 20 Retorna 2 y3" );				
+	Set @x1, 3;				
+	Set @Var1, 2;				
+	for @var1 to x Step 1				
+	{ println! ("Valor: ", @var1 ); }				
+					
+	println! ("Prueba 21 Retorna 1,3,5,7,9" );				
+	Set @Var1, 1;				
+	for @var1 to 10 Step 2				
+	{ println! ("Valor: ", @var1 ); }				
+					
+	println! ("Prueba 22 No Retorna nada" );				
+	Set @Var1, 10;				
+	for @var1 to 5 Step 2				
+	{ println! ("Valor: ", @var1 ); }				
+					
+	Set @Variable, 5;				
+	If @Variable == 5				
+	{				
+	println! ("Prueba 23 Entro al IF" );				
+	}				
+					
+					
+	If 1 + 2 == 3				
+	{				
+	println! ("Prueba 24 Entro al IF" );				
+	}				
+					
+	Set @Var1, 3;				
+	If @Var1 * 2 == 6				
+	{				
+	println! ("Prueba 25 Entro al IF" );				
+	}				
+					
+	Set @Var1, True;				
+	If @Var1 == True				
+	{				
+	println! ("Prueba 26 Entro al IF" );				
+	}				
+					
+	If True				
+	{				
+	println! ("Prueba 27 Entro al IF" );				
+	}				
+					
+					
+	If False				
+	{				
+	println! ("Prueba 28 NO Entro al ELSE" );				
+	}				
+	Else				
+	{				
+	println! ("Prueba 28 Entro al ELSE" );				
+	}				
+					
+	Set @Var1, 1;				
+	EnCaso				
+	Cuando @VAR1 = 1  EnTons				
+	{ println! ("Prueba 29 Entro ENCASO ") ;   }				
+	Cuando @VAR1 < 5 EnTons				
+	{ println! ("Prueba 30 Entro ENCASO ") ; }				
+	SiNo				
+	{ println! ("Prueba 31 Entro ENCASO ") ; }				
+	Fin-EnCaso;				
+					
+	Set @Var1, 4;				
+	EnCaso				
+	Cuando @VAR1 = 1  EnTons				
+	{ println! ("Prueba 29 Entro ENCASO ") ;   }				
+	Cuando @VAR1 < 5 EnTons				
+	{ println! ("Prueba 30 Entro ENCASO ") ; }				
+	SiNo				
+	{ println! ("Prueba 31 Entro ENCASO ") ; }				
+	Fin-EnCaso;				
+					
+	Set @Var1, 25;				
+	EnCaso				
+	Cuando @VAR1 = 1  EnTons				
+	{ println! ("Prueba 29 Entro ENCASO ") ;   }				
+	Cuando @VAR1 < 5 EnTons				
+	{ println! ("Prueba 30 Entro ENCASO ") ; }				
+	SiNo				
+	{ println! ("Prueba 31 Entro ENCASO ") ; }				
+	Fin-EnCaso;				
+					
+	Set @Var1, 1;				
+	EnCaso @VAR1				
+	Cuando @ = 1  EnTons				
+	{ println! ("Prueba 32 Entro ENCASO ") ;   }				
+	Cuando @ < 5 EnTons				
+	{ println! ("Prueba 33 Entro ENCASO ") ; }				
+	SiNo				
+	{ println! ("Prueba 34 Entro ENCASO ") ; }				
+	Fin-EnCaso;				
+					
+	Set @Var1, 4;				
+	EnCaso @VAR1				
+	Cuando  = 1  EnTons				
+	{ println! ("Prueba 32 Entro ENCASO ") ;   }				
+	Cuando  < 5 EnTons				
+	{ println! ("Prueba 33 Entro ENCASO ") ; }				
+	SiNo				
+	{ println! ("Prueba 34 Entro ENCASO ") ; }				
+	Fin-EnCaso;				
+					
+	Set @Var1, 25;				
+	EnCaso @VAR1				
+	Cuando  = 1  EnTons				
+	{ println! ("Prueba 32 Entro ENCASO ") ;   }				
+	Cuando  < 5 EnTons				
+	{ println! ("Prueba 33 Entro ENCASO ") ; }				
+	SiNo				
+	{ println! ("Prueba 34 Entro ENCASO ") ; }				
+	Fin-EnCaso;				
+					
+	println! ("Prueba 35 Final ") ; }				
+	}				
+					
+	Def @MiRutina (@dato1)				
+	{ println! ("Desde la rutina : ", @dato1 );				
+	Exec MiRutina2();				
+	}				
+					
+					
+					
+	Def  Principal ()				
+	{				
+	Set @Variable1, 5 # Variables globales				
+	Set @x1, 20				
+	SEt @y3, 15				
+	Set @variable, False				
+	Exec @MiRutina2();				
+	Exec @MiRutina3();				
+	Exec @MiRutina4();				
+	Exec @MiRutina5();				
+	Exec @MiRutina(@Variable1);				
+					
+					
+					
+					
+	}				

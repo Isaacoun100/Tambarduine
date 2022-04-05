@@ -5,7 +5,7 @@ from compiler.AST import Node
 
 indent_spaces = 4
 indent = indent_spaces * " "
-import_source = "import Firmata.Instructions as f"
+import_source = "import Firmata.Instructions as f" + "\n" + "T=1"
 
 
 # Para el metodo SET

@@ -1,0 +1,216 @@
+Def @MiRutina2 ()   {					
+	# ERR1				
+	SET @v, true;				
+					
+	# ERR2				
+	SET @v2, true;				
+					
+	# ERR3				
+	SET @01234567890, true;				
+					
+	# ERR4				
+	SET VAR1, true;				
+					
+	# ERR5				
+	SET @v1?, true;				
+					
+	# ERR6				
+	SET @Var@1, true;				
+}					
+					
+# ERR7					
+Def @M ()					
+	{ Set @x1, 4; }				
+					
+# ERR8					
+Def @MivariableFavorita ()					
+	{ Set @x1, 4; }				
+					
+# ERR9					
+Def foo ()					
+	{ Set @x1, 4; }				
+					
+# ERR10					
+Def @foo@1 ()					
+	{ Set @x1, 4; }				
+					
+Def @MiRutina3 ()   {					
+	# ERR11				
+	SET @var1, true;				
+	SET @var1, 25;				
+					
+	# ERR12				
+	Set @xar1, 20				
+	SEt @yar3, 15				
+	Set @xar1, false				
+					
+		}			
+					
+Def @MiRutina4 ()   {					
+	# ERR13				
+	SET @x123, 77 / 0:				
+					
+	# ERR14				
+	SET @var23,  @x2 + ((@98y * 10) / 4)   )				
+					
+	# ERR15				
+	SET @var23,  @x2 +  ( ((@98y * 10) / 4)   				
+					
+	# ERR16				
+	Set @x12, 2500; 				
+	Set @x12.Neg;				
+					
+	# ERR17				
+	Set @x12.T;				
+					
+	# ERR18				
+	Set @x12.F;				
+					
+	# ERR19				
+	Abanico ( C );				
+					
+	# ERR20				
+	Abanico ( True );				
+					
+	# ERR21				
+	Abanico (  );				
+					
+	# ERR22				
+	Vertical ( F );				
+					
+	# ERR23				
+	Vertical ( True );				
+					
+	# ERR24				
+	Vertical (  );				
+					
+	# ERR25				
+	Percutor ( X );				
+					
+	# ERR26				
+	Percutor ( 5 );				
+					
+	# ERR27				
+	Percutor ( );				
+					
+	# ERR28				
+	Golpe ( 5);				
+					
+	# ERR29				
+	Golpe ( TRUE);				
+					
+	# ERR30				
+	Vibrato(True)				
+					
+	# ERR31				
+	Vibrato()				
+					
+	# ERR32				
+	Metronomo ( A)				
+					
+	# ERR33				
+	Metronomo ( P, 1)				
+					
+	# ERR34				
+	Metronomo ( )				
+					
+	# ERR35				
+	Metronomo ( A, True)				
+					
+	# ERR36				
+	printlnX ("Hola Mundo");				
+					
+	# ERR37				
+	println! ("Este es el proyecto número ", @NoExiste, " de Compiladores ", 2022 );				
+					
+		}			
+					
+					
+Def @MiRutina5 ()   {					
+	# ERR38				
+	Set @x1, 3;				
+	for @var1 to @x1 				
+	{ println! ("Valor: ", @var1 ); }				
+					
+	# ERR39				
+	Set @x1, 3;				
+	for @var1 Step 1				
+	{ println! ("Valor: ", @var1 ); }				
+					
+	# ERR40				
+	Set @x1, 3;				
+	for @var1 to @x1 Step 1				
+	   println! ("Valor: ", @var1 ); }				
+					
+	# ERR41				
+	Set @x1, 3;				
+	for @var1 to @x1 Step 1				
+	{ println! ("Valor: ", @var1 ); 				
+	Set @x1, 3;				
+					
+	# ERR42				
+	If  				
+	{				
+	## Escribir el cuerpo del IF.				
+	}				
+					
+	# ERR43				
+	Set @Var, 3;				
+	If  5				
+	{				
+	## Escribir el cuerpo del IF.				
+	}				
+					
+	# ERR44				
+	EnCaso				
+	Sino				
+	{ println! ("Valor: ", @var1 );  }				
+	Fin-EnCaso;				
+					
+	# ERR45				
+	EnCaso				
+	   Cuando @Var = 3 EnTons  { println! ("Entro acá " ); }				
+	Sino				
+	{ println! ("Valor: ", @var1 );  }				
+	Set @Var, 3;				
+					
+					
+	# ERR46				
+	EnCaso @Var				
+	   Cuando  3 EnTons  { println! ("Entro acá " ); }				
+	Sino				
+	{ println! ("Valor: ", @var1 );  }				
+	Fin-EnCaso;				
+					
+					
+	# ERR47				
+	Exec @NoExiste(@Variable1);				
+					
+	# ERR48				
+	Exec @MiRutina5(25, 2);				
+					
+	}				
+					
+	Def @MiRutina (@dato1)				
+	{ println! ("Desde la rutina : ", @dato1 );				
+	Exec MiRutina2();				
+	}				
+					
+					
+	# ERR49				
+	Def Main ()				
+	{				
+	Set @Variable1, 5 # Variables globales				
+	Set @x1, 20				
+	SEt @y3, 15				
+	Set @variable, False				
+	Exec @MiRutina2();				
+	Exec @MiRutina3();				
+	Exec @MiRutina4();				
+	Exec @MiRutina5();				
+	Exec @MiRutina(@Variable1);				
+					
+	# ERR50				
+	SEt @y3, 15				
+	Exec @y3();				
+	}
