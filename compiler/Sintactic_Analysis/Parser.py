@@ -11,6 +11,7 @@ Class for the parser
 
 
 class CalcParser(Parser):
+    debugfile = 'parser.out'
     tokens = Lexer.CalcLexer.tokens
 
     def __init__(self):
@@ -31,7 +32,6 @@ class CalcParser(Parser):
             print("Error, variable no declarada")
         return node
 
-
     # ********************************* EXPRESSION *********************************#
 
     # DEFINITION OF EXPRESSION  **TERMINAL**
@@ -49,14 +49,21 @@ class CalcParser(Parser):
     # SET statement
     @_('SET NAME COMMA expr SEMI')
     def statement(self, p):
-        # SET NODE
-        node = Set()
-        # Token: ("SET_statement, p.Name, p.expr)
-        token = "Set-statement"
-        node.setToken(token)
-        # Children: [p.Name, p.expr]
-        children = [p.NAME, p.expr]
-        node.setChildren(children)
+        name = p.NAME
+        if not name in self.names:
+            self.names[name] = p.expr
+            # SET NODE
+            node = Set()
+            # Token: ("SET_statement, p.Name, p.expr)
+            token = "Set-statement"
+            node.setToken(token)
+            # Children: [p.Name, p.expr]
+            children = [p.NAME, p.expr]
+            node.setChildren(children)
+            print(self.names)
+        else:
+            print("ERROR, VARIABLE REPETIDA")
+
         return node
 
     # IF statement
@@ -69,6 +76,18 @@ class CalcParser(Parser):
         node.setToken(token)
         # Children: [p.expr, p.statement, p.Else]
         children = [p.expr, p.statement, p.Else]
+        node.setChildren(children)
+        return node
+
+    @_('IF LPAREN expr RPAREN LBRACE statement RBRACE')
+    def statement(self, p):
+        # IF NODE
+        node = If()
+        # Token: ('IF_statement', p.expr, p.statement)
+        token = "If-statement"
+        node.setToken(token)
+        # Children: [p.expr, p.statement]
+        children = [p.expr, p.statement]
         node.setChildren(children)
         return node
 

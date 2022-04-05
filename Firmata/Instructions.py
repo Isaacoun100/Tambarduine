@@ -7,7 +7,7 @@ import time
 board = pyfirmata.Arduino('COM3')
 
 servoX = board.get_pin('d:10:o')
-#servoY = board.get_pin('d:11:o')
+# servoY = board.get_pin('d:11:o')
 
 IN3X = board.get_pin('d:3:o')
 IN4X = board.get_pin('d:2:o')
@@ -25,28 +25,29 @@ IN4o = board.get_pin('d:13:o')
 LED = board.get_pin('d:11:o')
 
 board.digital[10].mode = SERVO
-#board.digital[11].mode = SERVO
+# board.digital[11].mode = SERVO
 
 Rango = int
 
 
+def Abanico(AoB, Tempo):  # Este método no sirve pues el proyecto funciona solo sobre el eje X
+    print("Hola soy abanico de: ", AoB, " y de: ", Tempo)
+    # board.pass_time(Tempo)
+    # if AoB == "A":
+    #     servoX.write(120)
+    #     board.pass_time(0.3)
+    #     servoX.write(90)
+    #     board.pass_time(0.3)
+    # if AoB == "B":
+    #     servoX.write(60)
+    #     board.pass_time(0.3)
+    #     servoX.write(90)
+    #     board.pass_time(0.3)
+    # else:
+    #     return "Este método no acepta otra opcion que A o B"
 
-def Abanico(AoB,Tempo): #Este método no sirve pues el proyecto funciona solo sobre el eje X
-    board.pass_time(Tempo)
-    if AoB == "A":
-        servoX.write(120)
-        board.pass_time(0.3)
-        servoX.write(90)
-        board.pass_time(0.3)
-    if AoB == "B":
-        servoX.write(60)
-        board.pass_time(0.3)
-        servoX.write(90)
-        board.pass_time(0.3)
-    else:
-        return "Este método no acepta otra opcion que A o B"
 
-def Percutor(Position,Tempo):
+def Percutor(Position, Tempo):
     board.pass_time(Tempo)
     PrenderLED()
     board.pass_time(0.1)
@@ -143,7 +144,8 @@ def Golpe(Tempo):
     board.pass_time(0.5)
     return
 
-def Vibrato (n,Tempo):
+
+def Vibrato(n, Tempo):
     board.pass_time(Tempo)
     i = 0
     while n != i:
@@ -164,13 +166,16 @@ def Vibrato (n,Tempo):
     ApagarLED()
     return
 
-def resetServoX ():
+
+def resetServoX():
     servoX.write(90)
     board.pass_time(0.3)
 
-def SetServoX (grados):
+
+def SetServoX(grados):
     servoX.write(grados)
     board.pass_time(0.3)
+
 
 def Vertical(DoI, Tempo):
     board.pass_time(Tempo)
@@ -190,17 +195,21 @@ def Vertical(DoI, Tempo):
     else:
         return "Este método no acepta otra opcion que I o D"
 
+
 def BeepLED(Tempo):
     board.digital[11].write(1)
     board.pass_time(Tempo)
     board.digital[11].write(0)
     board.pass_time(Tempo)
 
+
 def PrenderLED():
     board.digital[11].write(1)
 
+
 def ApagarLED():
     board.digital[11].write(0)
+
 
 def Metronomo(AorD, RangoTiempo):
     if AorD == "D":
@@ -219,15 +228,10 @@ def Metronomo(AorD, RangoTiempo):
             return "El metronomo solo puede  recibir A (encendido) o D (apagado) como primer argumento"
 
 
-
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     new_thread = Thread(BeepLED, 1)
     new_thread.start()
     Vibrato(10)
-
-
-
-
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
