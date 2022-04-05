@@ -16,15 +16,7 @@ class TestCompiler(TestCase):
         print(" -------------------- Assignment test --------------------"),
         text = '@var = 2 + 2 + 5*3;'
         ast = self.__compiler.compile(text)
-        ast.print()
-
-        node = ast.getRoot()
-        cg = CodeGenerator()
-        # result = cg.translate_node(node)
-
-        cg.compile(ast)
-
-    # print("Result of compiling: ", result)
+        print(ast)
 
     def test_Set(self):
         print(" -------------------- SET test --------------------")
@@ -35,10 +27,11 @@ class TestCompiler(TestCase):
 
     def test_if(self):
         print(" -------------------- IF test --------------------")
-        text = 'IF ( 8 < 23) { Metronomo(A, 1);} ELSE {Metronomo(A, 2);}'
+        text = '}'
 
         result = self.__compiler.compile(text)
-        print("Result of compiling: ", result)
+        print("Result of compiling: ")
+        print(result)
 
     def test_for_1(self):
         print(" -------------------- FOR (1) test --------------------")

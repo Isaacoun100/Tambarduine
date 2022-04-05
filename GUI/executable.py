@@ -1,2 +1,3 @@
-import firmata.py
-None
+import Firmata.Instructions as f
+
+f.Abanico("A", T)

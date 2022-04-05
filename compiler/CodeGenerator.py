@@ -5,7 +5,7 @@ from compiler.AST import Node
 
 indent_spaces = 4
 indent = indent_spaces * " "
-import_source = "import firmata.py"
+import_source = "import Firmata.Instructions as f"
 
 
 # Para el metodo SET
@@ -13,6 +13,7 @@ class CodeGenerator:
     '''
     Metodos para convertir cada uno de los nodos a string, se usara la recursividad
     '''
+    __methods = {}
 
     # Para el metodo SET
     def __translate_set(self, node: Node.Set):
@@ -38,7 +39,13 @@ class CodeGenerator:
 
         condition = children[0]
         statements = children[1]
+        if len(children) == 2:
+            return "if " + self.translate_node(condition) + ": \n" + indent + self.translate_node(
+                statements)
+
         Else = children[2]
+        return "if " + self.translate_node(condition) + ": \n" + indent + self.translate_node(
+            statements) + "\n" + self.translate_node(Else)
 
         return "if " + self.translate_node(condition) + ": \n" + indent + self.translate_node(
             statements) + "\n" + self.translate_node(Else)
@@ -60,8 +67,10 @@ class CodeGenerator:
         children = node.getChildren()
 
         name = children[0]
+        name_str = name[1:len(name)]
         statements = children[1]
 
+        self.__methods[name] = statements
         return "def " + name + "(): \n" + indent + self.translate_node(statements)
 
     # Para el metodo en caso
@@ -86,34 +95,43 @@ class CodeGenerator:
         children = node.getChildren()
 
         param = children[0]
-        return "Abanico(" + param + ")"
+
+        param_str = '"' + param + '"'
+        return "f.Abanico(" + param_str + ", T)"
 
     # Vertical
     def __translate_vertical(self, node: Node.Vertical):
         children = node.getChildren()
 
         param = children[0]
-        return "Vertical(" + param + ")"
+        param_str = '"' + param + '"'
+
+        return "f.Vertical(" + param_str + ", T)"
 
     # Percutor
     def __translate_percutor(self, node: Node.Percutor):
         children = node.getChildren()
 
         param = children[0]
-        return "Percutor(" + param + ")"
+
+        param_str = '"' + param + '"'
+
+        return "f.Percutor(" + param_str + ", T)"
 
         # Golpe
 
     def __translate_golpe(self, node: Node.Golpe):
 
-        return "Golpe()"
+        return "f.Golpe(T)"
 
     # Vibrato
     def __translate_vibrato(self, node: Node.Vibrato):
         children = node.getChildren()
 
         param = children[0]
-        return "Vibrato(" + param + ", T" + ")"
+        param_str = '"' + param + '"'
+
+        return "f.Vibrato(" + param_str + ", T" + ")"
 
     # Metronomo
     def __translate_metronomo(self, node: Node.Metronomo):
@@ -122,14 +140,14 @@ class CodeGenerator:
         time = children[1]
 
         # return "Metronomo(" + state + ", " + time + ")"
-        return "T = " + time
+        return "f.T = " + time
 
     # Print
     def __translate_print(self, node: Node.Print):
         children = node.getChildren()
 
         param = children[0]
-        return "print(" + self.translate_node(param) + ")"
+        return "print(" + '"' + self.translate_node(param) + ")"
 
     # Negation
     def __translate_negation(self, node: Node.Negation):
@@ -215,7 +233,8 @@ class CodeGenerator:
             return self.translate_node(factor1) + operator + self.translate_node(factor2)
 
         # is an terminal type
-
+        if isinstance(node, str):
+            return node[1:len(node)]
         else:
 
             return str(node)
